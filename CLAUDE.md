@@ -5,6 +5,30 @@ Read this before touching anything. It prevents re-auditing on every session.
 
 ---
 
+## Autonomous Skill Selection & Token Efficiency
+
+When given any task, Claude Code should:
+1. Scan the `/skills` directory automatically
+2. Identify which skill(s) are most relevant to the task
+3. Read the `SKILL.md` file(s) for those skills
+4. Execute the task using the best available skill without being asked
+5. If multiple skills apply, combine them intelligently
+6. Never ask permission to use a skill — just use it and state which one was used
+
+Token efficiency rules:
+- Always read only the specific `SKILL.md` files needed, never scan all skills unnecessarily
+- Reuse outputs from earlier in the session instead of regenerating
+- Break large tasks into focused subtasks rather than one massive prompt
+- Use `/compact` when context gets large
+- Prefer targeted file edits over rewriting entire files
+- Cache repeated context — do not re-read files already read in this session
+- State which skill was used and why in one line, then immediately execute — no lengthy preamble
+- If a task can be done without a skill, do it directly without loading any skill files
+
+This applies to all tasks including: lead research, content writing, ad creation, SEO, design, document creation, outreach, and development work.
+
+---
+
 ## Stack
 
 | Layer       | Technology                             |
