@@ -1093,6 +1093,23 @@
       .nav-cta { display: none; }
     }
   </style>
+
+  <!-- Meta Pixel — replace PIXEL_ID with your real ID from Meta Business Manager -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -1177,6 +1194,11 @@
           <input type="hidden" name="form-name" value="lead-capture" />
           <!-- Honeypot: bots fill this, humans don't -->
           <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <!-- UTM tracking: populated from URL params by JS -->
+          <input type="hidden" name="utm_source" id="utm_source" />
+          <input type="hidden" name="utm_medium" id="utm_medium" />
+          <input type="hidden" name="utm_campaign" id="utm_campaign" />
+          <input type="hidden" name="utm_content" id="utm_content" />
 
           <div class="form-group">
             <label for="fullName">Full Name</label>
@@ -1633,6 +1655,24 @@
         document.getElementById(id + '-err').classList.remove('visible');
       });
     });
+
+    // Capture UTM parameters from URL into hidden form fields
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(key) {
+        var el = document.getElementById(key);
+        if (el && params.get(key)) el.value = params.get(key);
+      });
+    })();
+
+    // Fire Meta InitiateCheckout when form is first focused
+    var formStarted = false;
+    document.getElementById('quoteForm').addEventListener('focusin', function() {
+      if (!formStarted && typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout');
+        formStarted = true;
+      }
+    }, { once: true });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href="#get-quote"], a[href="#how-it-works"]').forEach(a => {

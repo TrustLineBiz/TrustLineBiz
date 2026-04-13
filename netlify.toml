@@ -28,7 +28,9 @@
     # Tighten to hashes/nonces if a build step is added in future
     # upgrade-insecure-requests: coerces any stray http:// sub-resource to https://
     # object-src 'none': blocks plugins (Flash etc.) even if default-src would allow them
-    Content-Security-Policy     = "upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    # connect.facebook.net — Meta Pixel script loader
+    # www.facebook.com — Meta Pixel event endpoint
+    Content-Security-Policy     = "upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.facebook.com https://connect.facebook.net; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
 
 # ── CACHE CONTROL ────────────────────────────────────────────
 # HTML: always revalidate (content changes frequently)
