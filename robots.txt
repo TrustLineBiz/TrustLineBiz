@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /lead-finder.html
+Disallow: /lead-finder
+
+Sitemap: https://trustlinebiz.com/sitemap.xml

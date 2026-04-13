@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TrustLine Lead Finder</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<title>TrustLine Lead Finder — Internal</title>
 <style>
 :root {
   --navy:    #0d1f3c;
@@ -294,7 +296,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <section id="all-leads" class="section">
   <div class="section-hdr">
     <h1>All <span>Leads</span></h1>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-outline btn-sm" onclick="exportCSV()" title="Export all leads to CSV">↓ Export CSV</button>
       <input id="al-search" placeholder="Search..." oninput="renderAllLeads()"
         style="background:var(--card);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:6px 11px;font-size:0.78rem;outline:none;width:180px" />
       <select id="al-score" onchange="renderAllLeads()"
@@ -354,7 +357,22 @@ const uid  = () => Date.now().toString(36) + Math.random().toString(36).slice(2,
 const tod  = () => new Date().toISOString().slice(0,10);
 const fmtD = d  => d ? new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—';
 const past = d  => !!d && d < tod();
-const esc  = s  => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+// Full HTML escape — prevents XSS in all innerHTML injection points
+const esc  = s  => String(s||'')
+  .replace(/&/g,'&amp;')
+  .replace(/</g,'&lt;')
+  .replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;')
+  .replace(/'/g,'&#x27;');
+
+// Safe href: only allows http/https — blocks javascript: and data: URIs
+function safeHref(url) {
+  const s = String(url||'').trim();
+  if (!s) return null;
+  if (/^https?:\/\//i.test(s)) return esc(s);
+  if (/^(javascript|data|vbscript):/i.test(s)) return null;
+  return 'https://' + esc(s);
+}
 
 const COLS = [
   {id:'new-lead',   label:'New Lead',    color:'#818cf8'},
@@ -537,7 +555,7 @@ function renderMDetails() {
       ${dr('Owner',esc(l.ownerName)||'—')}
       ${dr('Phone',l.phone?`<a href="tel:${esc(l.phone)}" style="color:var(--gold)">${esc(l.phone)}</a>`:'—')}
       ${dr('Email',l.email?`<a href="mailto:${esc(l.email)}" style="color:var(--gold)">${esc(l.email)}</a>`:'—')}
-      ${dr('Website',l.website?`<a href="${l.website.startsWith('http')?esc(l.website):'https://'+esc(l.website)}" target="_blank" style="color:var(--gold)">${esc(l.website)}</a>`:'—')}
+      ${dr('Website',(()=>{const h=safeHref(l.website);return h?`<a href="${h}" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">${esc(l.website)}</a>`:'—';})())}
       ${dr('Business Type',esc(l.businessType)||'—')}
       ${dr('Revenue Est.',esc(l.revenue)||'—')}
       ${dr('Source',esc(l.source)||'—')}
@@ -743,6 +761,44 @@ function renderDash() {
       </div>`).join('')
     : '<p style="font-size:0.77rem;color:var(--muted)">No active A1 leads.</p>';
 }
+
+// ── CSV EXPORT ────────────────────────────────────────────
+function exportCSV() {
+  if (!leads.length) { toast('No leads to export'); return; }
+  const HEADERS = ['Business Name','Owner','Phone','Email','Website','Type','Revenue','Score','Stage','Source','Follow Up','Last Contact','Notes','Added'];
+  const rows = leads.map(l => [
+    l.businessName, l.ownerName, l.phone, l.email, l.website,
+    l.businessType, l.revenue, l.score, ST_LBL[l.status]||l.status,
+    l.source, l.followUpDate, l.lastContact, l.notes, l.createdAt
+  ].map(v => '"' + String(v||'').replace(/"/g,'""') + '"'));
+  const csv  = [HEADERS.map(h=>'"'+h+'"').join(','), ...rows.map(r=>r.join(','))].join('\r\n');
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url  = URL.createObjectURL(blob);
+  const a    = Object.assign(document.createElement('a'), {href:url, download:'trustline-leads-'+tod()+'.csv'});
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast('Exported ' + leads.length + ' leads to CSV');
+}
+
+// ── KEYBOARD SHORTCUTS ────────────────────────────────────
+document.addEventListener('keydown', e => {
+  // Escape: close modal
+  if (e.key === 'Escape') {
+    if (document.getElementById('modal-overlay').classList.contains('open')) closeModal();
+  }
+  // Ignore shortcuts when typing in a field
+  if (e.target.matches('input,textarea,select')) return;
+  // n → new lead
+  if (e.key === 'n' || e.key === 'N') show('add-lead');
+  // p → pipeline
+  if (e.key === 'p' || e.key === 'P') show('pipeline');
+  // d → dashboard
+  if (e.key === 'd' || e.key === 'D') show('dashboard');
+  // a → all leads
+  if (e.key === 'a' || e.key === 'A') show('all-leads');
+});
 
 // ── INIT ──────────────────────────────────────────────────
 renderDash();

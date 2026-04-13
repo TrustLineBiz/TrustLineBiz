@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env / secrets (never commit these)
+.env
+.env.*
+!.env.example
+
+# Netlify local dev
+.netlify/
+
+# Node (if added later)
+node_modules/
+dist/
+build/

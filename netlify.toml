@@ -1,0 +1,90 @@
+# ──────────────────────────────────────────────────────────────
+# TrustLine Biz — Netlify Configuration
+# Covers: build, security headers, cache, redirects
+# ──────────────────────────────────────────────────────────────
+
+[build]
+  publish = "."
+
+# ── SECURITY HEADERS (all pages) ──────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Prevent clickjacking
+    X-Frame-Options             = "DENY"
+    # Prevent MIME sniffing
+    X-Content-Type-Options      = "nosniff"
+    # Legacy XSS filter (belt + suspenders)
+    X-XSS-Protection            = "1; mode=block"
+    # Limit referrer data leaked to external sites
+    Referrer-Policy             = "strict-origin-when-cross-origin"
+    # Disable browser features not used by this site
+    Permissions-Policy          = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+    # Content Security Policy
+    # unsafe-inline required because all CSS/JS is inline (no build step yet)
+    # Tighten to hashes/nonces if a build step is added in future
+    Content-Security-Policy     = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+
+# ── CACHE CONTROL ────────────────────────────────────────────
+# HTML: always revalidate (content changes frequently)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Images: long cache (use new filename when changing)
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── REDIRECTS ────────────────────────────────────────────────
+# Canonical: www → non-www (update if domain changes)
+[[redirects]]
+  from   = "https://www.trustlinebiz.com/*"
+  to     = "https://trustlinebiz.com/:splat"
+  status = 301
+  force  = true
+
+# Extensionless URLs for cleaner links
+[[redirects]]
+  from   = "/privacy"
+  to     = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from   = "/terms"
+  to     = "/terms.html"
+  status = 200
+
+# thank-you page (for future post-form redirect)
+[[redirects]]
+  from   = "/thank-you"
+  to     = "/thank-you.html"
+  status = 200
+
+# 404 fallback
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 404

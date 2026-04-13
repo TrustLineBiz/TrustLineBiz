@@ -26,6 +26,7 @@
   <!-- Trust / Indexing -->
   <meta name="robots" content="index, follow" />
   <meta name="author" content="TrustLine" />
+  <meta name="theme-color" content="#081426" />
 
   <!-- Structured Data: Financial Service -->
   <script type="application/ld+json">
@@ -1171,18 +1172,20 @@
         <h2>See How Much Your Business Qualifies For</h2>
         <p>Free check. No obligation. Won't affect your credit score.</p>
 
-        <form id="quoteForm" name="lead-capture" data-netlify="true" novalidate>
+        <form id="quoteForm" name="lead-capture" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
           <input type="hidden" name="form-name" value="lead-capture" />
+          <!-- Honeypot: bots fill this, humans don't -->
+          <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="form-group">
             <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" autocomplete="name" />
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" autocomplete="name" maxlength="100" />
             <div class="error-msg" id="fullName-err">Please enter your full name.</div>
           </div>
 
           <div class="form-group">
             <label for="businessName">Business Name</label>
-            <input type="text" id="businessName" name="businessName" placeholder="Acme Co." autocomplete="organization" />
+            <input type="text" id="businessName" name="businessName" placeholder="Acme Co." autocomplete="organization" maxlength="150" />
             <div class="error-msg" id="businessName-err">Please enter your business name.</div>
           </div>
 
@@ -1213,6 +1216,10 @@
           </div>
 
           <button type="submit" class="btn-primary">Check My Funding Options →</button>
+
+          <div id="submit-error" style="display:none; color:#e05252; font-size:0.78rem; text-align:center; margin-top:10px; line-height:1.5;">
+            Something went wrong. Please try again or call us directly.
+          </div>
 
           <p class="tcpa-consent">By submitting this form you consent to be contacted by TrustLine and its partners via phone, email, or SMS regarding your funding inquiry. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
 
@@ -1595,14 +1602,27 @@
 
       if (!valid) return;
 
-      const btn = this.querySelector('.btn-primary');
+      const btn      = this.querySelector('.btn-primary');
+      const errDiv   = document.getElementById('submit-error');
       btn.textContent = 'Checking options…';
-      btn.disabled = true;
+      btn.disabled    = true;
+      errDiv.style.display = 'none';
 
-      setTimeout(() => {
+      // POST to Netlify Forms — this is what actually captures the lead
+      fetch('/', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body:    new URLSearchParams(new FormData(this)).toString()
+      })
+      .then(() => {
         document.getElementById('quoteForm').style.display = 'none';
         document.getElementById('formSuccess').classList.add('visible');
-      }, 900);
+      })
+      .catch(() => {
+        btn.textContent  = 'Check My Funding Options →';
+        btn.disabled     = false;
+        errDiv.style.display = 'block';
+      });
     });
 
     // Clear error on input
