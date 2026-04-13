@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>TrustLine | Fast Business Funding — $5K to $20M+ in 24–48 Hours</title>
+  <meta name="description" content="TrustLine connects small business owners with 100+ private lenders. Get $5,000 to $20,000,000+ in working capital with approvals as fast as 24 hours. No bank required. Free to apply." />
+  <meta name="keywords" content="business funding, small business loans, merchant cash advance, fast business capital, working capital, business financing" />
+  <link rel="canonical" href="https://trustlinebiz.netlify.app/" />
+
+  <!-- Open Graph (social sharing / SMS previews) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trustlinebiz.netlify.app/" />
+  <meta property="og:title" content="TrustLine | Fast Business Funding — No Bank Hassles" />
+  <meta property="og:description" content="Access $5K–$20M+ in working capital. 100+ lenders. Decisions in 24–48 hours. Free to apply, no credit impact." />
+  <meta property="og:image" content="https://trustlinebiz.netlify.app/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TrustLine | Fast Business Funding" />
+  <meta name="twitter:description" content="Get matched with 100+ lenders in minutes. $5K–$20M+. No bank required." />
+  <meta name="twitter:image" content="https://trustlinebiz.netlify.app/og-image.png" />
+
+  <!-- Trust / Indexing -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="TrustLine" />
+
+  <!-- Structured Data: Financial Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "TrustLine",
+    "url": "https://trustlinebiz.netlify.app",
+    "description": "TrustLine connects small business owners with 100+ private lenders for fast working capital from $5,000 to $20,000,000+.",
+    "areaServed": "US",
+    "serviceType": "Business Funding",
+    "priceRange": "Free to Apply"
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0d1f3c;
+      --navy-light: #162d55;
+      --navy-dark:  #081426;
+      --gold:       #c9a84c;
+      --gold-light: #e0be72;
+      --gold-dark:  #a8863a;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray:       #8a95a3;
+      --text:       #1a2940;
+      --border:     #dde3ea;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy-dark);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--navy-dark);
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 28px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      width: fit-content;
+    }
+
+    .trust-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.3px;
+      background: rgba(201,168,76,0.08);
+      white-space: nowrap;
+    }
+
+    .trust-strip-item + .trust-strip-item {
+      border-left: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .trust-strip-item svg { flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      .trust-strip { width: 100%; justify-content: center; }
+      .trust-strip-item { flex: 1 1 auto; justify-content: center; }
+      .trust-strip-item + .trust-strip-item { border-left: none; border-top: 1px solid rgba(201,168,76,0.25); }
+    }
+
+    @media (max-width: 500px) {
+      .trust-strip-item { font-size: 0.72rem; padding: 9px 12px; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 500px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn-hero-secondary {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .btn-hero-secondary:hover { color: var(--gold-light); }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 44px 40px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+      border-radius: 18px 18px 0 0;
+    }
+
+    .form-card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .form-card p {
+      font-size: 0.875rem;
+      color: var(--gray);
+      margin-bottom: 26px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.925rem;
+      color: var(--text);
+      background: var(--off-white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--gold);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+    }
+
+    input.error, select.error {
+      border-color: #e05252;
+      box-shadow: 0 0 0 3px rgba(224,82,82,0.12);
+    }
+
+    .error-msg {
+      font-size: 0.76rem;
+      color: #e05252;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-msg.visible { display: block; }
+
+    .select-wrapper { position: relative; }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--gray);
+      pointer-events: none;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy-dark);
+      font-size: 1rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      margin-top: 8px;
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+      box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201,168,76,0.5);
+      filter: brightness(1.05);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    .form-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 0.76rem;
+      color: var(--gray);
+    }
+
+    .form-trust svg { flex-shrink: 0; }
+
+    .tcpa-consent {
+      font-size: 0.7rem;
+      color: #a0aab4;
+      line-height: 1.6;
+      margin-top: 12px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    .tcpa-consent a {
+      color: var(--gold-dark);
+      text-decoration: underline;
+    }
+
+    .tcpa-consent a:hover { color: var(--gold); }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .form-success.visible { display: block; }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .form-success h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .form-success p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+
+    /* ── SHARED SECTION STYLES ── */
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 540px;
+      margin: 0 auto 56px;
+      line-height: 1.7;
+    }
+
+    /* ── WHAT WE DO ── */
+    .what-we-do {
+      background: var(--white);
+      padding: 90px 5%;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .what-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .what-card {
+      text-align: center;
+      padding: 40px 28px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      background: var(--off-white);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .what-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(13,31,60,0.08);
+      border-color: var(--gold);
+    }
+
+    .what-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--navy);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+    }
+
+    .what-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .what-card p {
+      font-size: 0.925rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    .what-card .amount-badge {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 4px 14px;
+      border-radius: 100px;
+    }
+
+    @media (max-width: 800px) {
+      .what-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works {
+      background: var(--navy-dark);
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .how-it-works .section-title { color: var(--white); }
+    .how-it-works .section-sub   { color: rgba(255,255,255,0.55); }
+
+    .steps-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.67% + 20px);
+      right: calc(16.67% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, rgba(201,168,76,0.4), rgba(201,168,76,0.15));
+      z-index: 0;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 36px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--navy-dark);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .step-time {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 700px) {
+      .steps-grid { grid-template-columns: 1fr; max-width: 360px; }
+      .steps-grid::before { display: none; }
+    }
+
+    /* ── BENEFITS ── */
+    .benefits {
+      background: var(--off-white);
+      padding: 90px 5%;
+    }
+
+    .benefits-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px 34px;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(13,31,60,0.1);
+    }
+
+    .benefit-card:hover::after { transform: scaleX(1); }
+
+    .benefit-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.06));
+      border: 1.5px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .benefit-card p {
+      font-size: 0.925rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* ── FUNDING PRODUCTS ── */
+    .products {
+      background: var(--white);
+      padding: 90px 5%;
+    }
+
+    .products-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--off-white);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 22px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      cursor: default;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(13,31,60,0.1);
+      border-color: var(--gold);
+    }
+
+    .product-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .product-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .product-card p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .product-range {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--off-white);
+      padding: 90px 5%;
+    }
+
+    .testimonials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(13,31,60,0.08);
+    }
+
+    .testimonial-quote {
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .author-info strong {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .author-info span {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .star {
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+
+    .proof-bar {
+      max-width: 900px;
+      margin: 0 auto 56px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-stat strong {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .proof-stat span {
+      font-size: 0.82rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+
+    /* ── BOTTOM CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      padding: 90px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-band > p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      margin-bottom: 34px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy-dark);
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 17px 40px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+      box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(201,168,76,0.5);
+      filter: brightness(1.05);
+    }
+
+    .cta-micro {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-micro span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      padding: 36px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-trust {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .trust-badge svg { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-disclaimer {
+      width: 100%;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.65;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+      width: 100%;
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero { padding-top: 90px; }
+      .hero-content { text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-stats { justify-content: center; }
+      .hero-cta-group { justify-content: center; }
+      .benefits-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+
+    @media (max-width: 600px) {
+      .form-card { padding: 32px 24px; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-trust { flex-wrap: wrap; }
+      .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAV
+  ════════════════════════════════════════════ -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-mark">TL</div>
+      <span class="logo-text">Trust<span>Line</span></span>
+    </a>
+    <a href="#get-quote" class="nav-cta">Check My Options →</a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1: HERO
+  ════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+
+        <!-- Trust strip -->
+        <div class="trust-strip">
+          <div class="trust-strip-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#c9a84c" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            No Bank Required
+          </div>
+          <div class="trust-strip-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            $5K–$500K+
+          </div>
+          <div class="trust-strip-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#c9a84c" stroke-width="2"/><path d="M12 7v5l3 2.5" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Funded in 24–48 Hours
+          </div>
+          <div class="trust-strip-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#c9a84c" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="#c9a84c" stroke-width="2"/></svg>
+            All 50 States
+          </div>
+        </div>
+
+        <!-- Headline -->
+        <h1>Get $5,000–$500,000 in<br /><em>Business Funding</em><br />in as Little as 24 Hours</h1>
+
+        <p class="hero-sub">We match your business to 100+ private lenders — not banks. No lengthy applications. No months of waiting. Find out what you qualify for in minutes, with no impact to your credit score.</p>
+
+        <div class="hero-cta-group">
+          <a href="#get-quote" class="btn-gold" style="font-size:1rem; padding:15px 34px;">Check My Funding Options →</a>
+          <a href="#how-it-works" class="btn-hero-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M10 9l4 3-4 3V9z" fill="currentColor"/></svg>
+            See How It Works
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">$500K+</span>
+            <span class="stat-label">Max Funding</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">24–48h</span>
+            <span class="stat-label">Approval Time</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">Lender Network</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2 min</span>
+            <span class="stat-label">Application</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM CARD -->
+      <div class="form-card" id="get-quote">
+        <h2>See How Much Your Business Qualifies For</h2>
+        <p>Free check. No obligation. Won't affect your credit score.</p>
+
+        <form id="quoteForm" name="lead-capture" data-netlify="true" novalidate>
+          <input type="hidden" name="form-name" value="lead-capture" />
+
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" autocomplete="name" />
+            <div class="error-msg" id="fullName-err">Please enter your full name.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="businessName">Business Name</label>
+            <input type="text" id="businessName" name="businessName" placeholder="Acme Co." autocomplete="organization" />
+            <div class="error-msg" id="businessName-err">Please enter your business name.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+            <div class="error-msg" id="phone-err">Please enter a valid phone number.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@acmeco.com" autocomplete="email" />
+            <div class="error-msg" id="email-err">Please enter a valid email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="revenue">Monthly Revenue</label>
+            <div class="select-wrapper">
+              <select id="revenue" name="revenue">
+                <option value="">Select monthly revenue...</option>
+                <option value="under-10k">Under $10K/mo</option>
+                <option value="10k-50k">$10K – $50K/mo</option>
+                <option value="50k-100k">$50K – $100K/mo</option>
+                <option value="100k-plus">$100K+/mo</option>
+              </select>
+            </div>
+            <div class="error-msg" id="revenue-err">Please select your monthly revenue range.</div>
+          </div>
+
+          <button type="submit" class="btn-primary">Check My Funding Options →</button>
+
+          <p class="tcpa-consent">By submitting this form you consent to be contacted by TrustLine and its partners via phone, email, or SMS regarding your funding inquiry. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
+
+          <div class="form-trust">
+            <svg width="13" height="14" viewBox="0 0 13 14" fill="none">
+              <path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="#8a95a3" stroke-width="1.2" fill="none"/>
+              <path d="M4 7L6 9L9.5 5.5" stroke="#8a95a3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            256-bit SSL encrypted · Your info is never sold
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12L10 17L19 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>You're in the queue!</h3>
+          <p>A TrustLine funding specialist will reach out within <strong>1 business hour</strong> with your personalized options. Check your email and phone — we move fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2: WHAT WE DO
+  ════════════════════════════════════════════ -->
+  <section class="what-we-do">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">We Get Small Businesses Funded — Fast</h2>
+    <p class="section-sub">TrustLine is not a bank. We're a private lending marketplace. Submit one short application and we instantly match you against 100+ lenders competing for your business.</p>
+
+    <div class="what-grid">
+
+      <div class="what-card">
+        <div class="what-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="9" cy="12" r="6" stroke="#c9a84c" stroke-width="1.8"/>
+            <circle cx="15" cy="12" r="6" stroke="#c9a84c" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <h3>One Application. 100+ Lenders.</h3>
+        <p>Instead of applying to lenders one by one, you fill out a single 2-minute form and we do the shopping for you — matching your profile against our entire lender network at once.</p>
+      </div>
+
+      <div class="what-card">
+        <div class="what-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>$5,000 to $500,000+ Available</h3>
+        <p>Whether you need $10K to cover a slow month or $300K to open a second location, we have funding options for businesses at every stage and size.</p>
+        <span class="amount-badge">$5K · $50K · $250K · $500K+</span>
+      </div>
+
+      <div class="what-card">
+        <div class="what-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M12 7V12L15 14.5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Approvals in 24 Hours, Not Weeks</h3>
+        <p>Banks take 30–90 days. Our lenders make decisions in hours. Most of our clients see money in their account within 24–48 hours of submitting their application.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3: HOW IT WORKS
+  ════════════════════════════════════════════ -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-label" style="color: rgba(201,168,76,0.7);">The Process</div>
+    <h2 class="section-title">Three Steps to Funded</h2>
+    <p class="section-sub">The whole process takes less time than a coffee run. No paperwork stacks. No bank meetings. No waiting months to hear back.</p>
+
+    <div class="steps-grid">
+
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Fill Out One Short Form</h3>
+        <p>Tell us your business name, monthly revenue, and how much you're looking for. No tax returns, no financial statements required to get started.</p>
+        <span class="step-time">Takes ~2 minutes</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Get Matched With Lenders</h3>
+        <p>We instantly compare your profile across 100+ lenders and surface the best available offers — ranked by rate, terms, and speed — so you can pick the right fit.</p>
+        <span class="step-time">Results in minutes</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Receive Your Funding</h3>
+        <p>Accept an offer, complete the lender's final steps, and get the money deposited directly into your business bank account.</p>
+        <span class="step-time">Funded in 24–48 hours</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 4: SERVICES (FUNDING PRODUCTS)
+  ════════════════════════════════════════════ -->
+  <section class="products">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Every Type of Business Funding, in One Place</h2>
+    <p class="section-sub">Not sure what type of funding fits your situation? We'll match you to the right product automatically — but here's what's available.</p>
+
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Merchant Cash Advance</h3>
+        <p>Get a lump sum today and repay it as a small percentage of your daily sales. No fixed monthly payment — you pay more when business is good, less when it's slow.</p>
+        <span class="product-range">$5K – $500K</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="7" width="20" height="14" rx="2" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#c9a84c" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 12v4M10 14h4" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Business Term Loan</h3>
+        <p>A fixed amount deposited upfront, repaid over a set schedule with predictable payments. Ideal if you need capital for a specific goal — expansion, hiring, or inventory.</p>
+        <span class="product-range">$10K – $500K</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3h18l-2 13H5L3 3z" stroke="#c9a84c" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+            <path d="M8 21h8M12 17v4" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>SBA Loans</h3>
+        <p>Government-backed loans with lower rates and longer repayment terms — best for businesses that qualify and want the most affordable long-term financing.</p>
+        <span class="product-range">$50K – $5M</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="13" width="7" height="8" rx="1" stroke="#c9a84c" stroke-width="1.8"/>
+            <rect x="9" y="9" width="6" height="12" rx="1" stroke="#c9a84c" stroke-width="1.8"/>
+            <rect x="15" y="5" width="7" height="16" rx="1" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M2 21h20" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Equipment Financing</h3>
+        <p>Need a truck, commercial kitchen, or new machinery? Finance the equipment directly — the asset itself acts as collateral, making approval easier than a standard loan.</p>
+        <span class="product-range">Up to $500K</span>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M8 12h8M12 8v8" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Business Line of Credit</h3>
+        <p>A revolving credit line you draw from only when you need it — and only pay interest on what you actually use. Perfect for managing cash flow gaps between invoices.</p>
+        <span class="product-range">Up to $250K</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 5: TRUST / TESTIMONIALS
+  ════════════════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="section-label">Real Results</div>
+    <h2 class="section-title">Business Owners Who Got Funded</h2>
+    <p class="section-sub">We don't just talk about fast funding — here's what it looks like in practice.</p>
+
+    <!-- Proof bar -->
+    <div class="proof-bar">
+      <div class="proof-stat">
+        <strong>3,200+</strong>
+        <span>Businesses Funded</span>
+      </div>
+      <div class="proof-stat">
+        <strong>$180M+</strong>
+        <span>Total Capital Deployed</span>
+      </div>
+      <div class="proof-stat">
+        <strong>24 hrs</strong>
+        <span>Avg. Approval Time</span>
+      </div>
+      <div class="proof-stat">
+        <strong>91%</strong>
+        <span>Approval Rate</span>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>I needed $75,000 fast to cover inventory before the holiday season. Two banks said no. TrustLine had me approved the same day I applied and the money was in my account 48 hours later. I still can't believe how easy it was.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MT</div>
+          <div class="author-info">
+            <strong>Marcus T.</strong>
+            <span>Retail Store Owner — Miami, FL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>We had a big contract on the table but needed $40,000 to hire the crew and buy materials to take it. TrustLine matched us with a lender in under an hour. We took the contract, delivered the job, and paid off the advance in 90 days.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DK</div>
+          <div class="author-info">
+            <strong>David K.</strong>
+            <span>Landscaping Company — Phoenix, AZ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>My credit isn't perfect and I assumed I'd be rejected. TrustLine looks at your revenue and cash flow, not just your credit score. I was approved for $28,000 within 24 hours and used it to upgrade my salon equipment. Best decision I made.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SR</div>
+          <div class="author-info">
+            <strong>Sandra R.</strong>
+            <span>Salon Owner — Dallas, TX</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Trust badges row -->
+    <div style="max-width:700px; margin: 48px auto 0; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
+        <svg width="16" height="17" viewBox="0 0 13 14" fill="none"><path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="#a8863a" stroke-width="1.3" fill="none"/><path d="M4 7L6 9L9.5 5.5" stroke="#a8863a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        256-Bit SSL Encryption
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#a8863a" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="#a8863a" stroke-width="1.8"/></svg>
+        No Obligation Quote
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#a8863a" stroke-width="1.8"/><path d="M8 12l3 3 5-5" stroke="#a8863a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        No Credit Score Impact
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#a8863a" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#a8863a" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Your Info Is Never Sold
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 6: STRONG CTA SECTION
+  ════════════════════════════════════════════ -->
+  <section class="cta-band">
+    <h2>Your Funding Is Waiting.<br />It Takes 2 Minutes to Apply.</h2>
+    <p>No bank visits. No credit impact. No obligation. Just a free look at what your business qualifies for — right now, today.</p>
+    <a href="#get-quote" class="btn-gold">Check My Funding Options →</a>
+    <div class="cta-micro">
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Results in minutes
+      </span>
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        100+ lenders compared
+      </span>
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Funded as fast as 24 hours
+      </span>
+      <span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All 50 states served
+      </span>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer>
+    <a href="#" class="footer-logo">
+      <div class="logo-mark">TL</div>
+      <span class="logo-text" style="color:white">Trust<span style="color:var(--gold)">Line</span></span>
+    </a>
+    <div class="footer-trust">
+      <div class="trust-badge">
+        <svg width="11" height="12" viewBox="0 0 13 14" fill="none">
+          <path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="currentColor" stroke-width="1.3" fill="none"/>
+        </svg>
+        SSL Secured
+      </div>
+      <div class="trust-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        No Obligation
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer-disclaimer">
+      TrustLine is a lead generation service and not a direct lender. Submitted information may be shared with funding partners. TrustLine does not make credit decisions or guarantee approval. All financing is subject to lender underwriting and applicable terms. Testimonials are representative of typical client experiences and individual results may vary.
+    </div>
+    <div class="footer-copy">
+      © 2026 TrustLine Biz · trustlinebiz.com · All rights reserved.
+    </div>
+  </footer>
+
+
+  <script>
+    // Phone number auto-formatting
+    document.getElementById('phone').addEventListener('input', function (e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (v.length >= 7)      v = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+      else if (v.length >= 4) v = '(' + v.slice(0,3) + ') ' + v.slice(3);
+      else if (v.length > 0)  v = '(' + v;
+      e.target.value = v;
+    });
+
+    // Form validation & submission
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const fields = {
+        fullName:     { el: document.getElementById('fullName'),     validate: v => v.trim().length >= 2 },
+        businessName: { el: document.getElementById('businessName'), validate: v => v.trim().length >= 1 },
+        phone:        { el: document.getElementById('phone'),        validate: v => v.replace(/\D/g,'').length >= 10 },
+        email:        { el: document.getElementById('email'),        validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        revenue:      { el: document.getElementById('revenue'),      validate: v => v !== '' },
+      };
+
+      let valid = true;
+
+      Object.entries(fields).forEach(([key, { el, validate }]) => {
+        const err = document.getElementById(key + '-err');
+        if (!validate(el.value)) {
+          el.classList.add('error');
+          err.classList.add('visible');
+          valid = false;
+        } else {
+          el.classList.remove('error');
+          err.classList.remove('visible');
+        }
+      });
+
+      if (!valid) return;
+
+      const btn = this.querySelector('.btn-primary');
+      btn.textContent = 'Checking options…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('quoteForm').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('visible');
+      }, 900);
+    });
+
+    // Clear error on input
+    ['fullName','businessName','phone','email','revenue'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', () => {
+        el.classList.remove('error');
+        document.getElementById(id + '-err').classList.remove('visible');
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href="#get-quote"], a[href="#how-it-works"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.getElementById(a.getAttribute('href').slice(1));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  </script>
+</body>
+</html>
