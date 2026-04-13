@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "brand_name": "TrustLine",
+  "website_url": "https://trustlinebiz.com",
+  "extracted_at": "2026-04-13T00:00:00Z",
+  "extraction_notes": "Extracted from live homepage (full HTML + inline CSS). About and product pages unavailable (single-page site). Confidence: HIGH for colors, typography, voice. No Google Fonts detected — system UI stack only.",
+
+  "voice": {
+    "formal_casual": 7,
+    "rational_emotional": 5,
+    "playful_serious": 3,
+    "bold_subtle": 9,
+    "traditional_innovative": 6,
+    "expert_accessible": 8,
+    "descriptors": ["urgent", "direct", "accessible"],
+    "confidence": {
+      "formal_casual": "high",
+      "rational_emotional": "high",
+      "playful_serious": "high",
+      "bold_subtle": "high",
+      "traditional_innovative": "medium",
+      "expert_accessible": "high"
+    },
+    "signal_notes": {
+      "formal_casual": "Uses 'you/your' throughout, plain language, '2 min application' → casual",
+      "rational_emotional": "Large stats ($180M+, 91%) balanced with 3 personal testimonials → even split",
+      "playful_serious": "Financial urgency, 'money in your account 48 hours' → serious/urgent",
+      "bold_subtle": "Big number claims, 'No bank required', direct CTAs → very bold",
+      "traditional_innovative": "'Not banks — private lenders', '100+ lenders competing' → slightly innovative",
+      "expert_accessible": "No jargon, removes friction framing, 'no impact to credit score' → very accessible"
+    }
+  },
+
+  "colors": {
+    "primary": "#c9a84c",
+    "secondary": ["#0d1f3c", "#162d55"],
+    "forbidden": ["#ffffff (as dominant background — off-brand)", "bright red (panic/warning connotation)"],
+    "background": "#081426",
+    "text": "#1a2940",
+    "accent_light": "#e0be72",
+    "accent_dark": "#a8863a",
+    "neutral": "#f5f7fa"
+  },
+
+  "typography": {
+    "heading_font": null,
+    "body_font": "system-ui",
+    "pairing_descriptor": "System UI stack only (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto) — no custom typeface loaded. Clean and fast-loading by design.",
+    "weight_usage": "800–900 for headlines, 600–700 for body emphasis, 400 for body copy"
+  },
+
+  "imagery": {
+    "style": "flat design / text-forward with gradient backgrounds",
+    "subjects": ["business owners", "financial growth", "speed/momentum"],
+    "composition": "Clean, dark-background hero with gold accent elements; white cards on light backgrounds for content sections; minimal photography on live site",
+    "forbidden": [
+      "get rich quick imagery",
+      "unrealistic wealth displays (luxury cars, mansions, stacks of cash)",
+      "bank branch imagery (brand explicitly opposes banks)",
+      "corporate stock photo aesthetic",
+      "fine print-heavy imagery"
+    ]
+  },
+
+  "aesthetic": {
+    "mood_keywords": ["trustworthy", "fast", "empowering", "accessible"],
+    "texture": "minimal",
+    "negative_space": "generous"
+  },
+
+  "brand_values": [
+    "speed (24–48 hour funding is the core promise)",
+    "accessibility (not a bank — anyone can qualify)",
+    "transparency (no hidden steps, free to apply, no credit impact)"
+  ],
+
+  "target_audience": {
+    "age_range": "30–55",
+    "profession": "Small business owners, sole proprietors, entrepreneurs across all industries",
+    "pain_points": [
+      "Rejected by traditional banks",
+      "Slow funding timelines blocking growth opportunities",
+      "Cash flow gaps between invoices or slow seasons",
+      "Credit score concerns preventing access to capital",
+      "Complex bank application processes"
+    ],
+    "aspirations": [
+      "Seize a growth opportunity quickly (new contract, inventory, expansion)",
+      "Cover operations during a slow period without closing",
+      "Avoid losing a deal due to lack of capital",
+      "Feel in control of their business finances"
+    ]
+  },
+
+  "compliance_flags": [
+    "Lead generation service for credit products — Meta Special Ad Category: Credit required",
+    "Cannot target by age, gender, or ZIP code on Meta",
+    "Must use Special Ad Audiences (not Lookalikes) on Meta",
+    "TCPA consent language already present on form — include in ads where possible",
+    "Do not use guaranteed approval language in ad copy"
+  ]
+}
