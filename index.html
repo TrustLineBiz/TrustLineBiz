@@ -60,7 +60,7 @@
       --border:     #dde3ea;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-padding-top: 68px; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
@@ -134,7 +134,7 @@
       align-items: center;
       padding: 100px 5% 60px;
       position: relative;
-      overflow: hidden;
+      overflow: clip;
     }
 
     .hero::before {
@@ -565,7 +565,7 @@
       background: var(--navy-dark);
       padding: 90px 5%;
       position: relative;
-      overflow: hidden;
+      overflow: clip;
     }
 
     .how-it-works::before {
@@ -802,124 +802,60 @@
       .products-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials {
+    /* ── WHY TRUSTLINE ── */
+    .why-trustline {
       background: var(--off-white);
       padding: 90px 5%;
     }
 
-    .testimonials-grid {
-      max-width: 1100px;
+    .why-grid {
+      max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px;
     }
 
-    .testimonial-card {
+    .why-card {
       background: var(--white);
       border-radius: 16px;
       padding: 36px 32px;
       border: 1px solid var(--border);
-      position: relative;
       transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(13,31,60,0.08);
+    .why-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(13,31,60,0.08);
     }
 
-    .testimonial-quote {
-      font-size: 2.5rem;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 16px;
-      font-family: Georgia, serif;
-    }
-
-    .testimonial-card p {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .author-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    .why-card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.06));
+      border: 1.5px solid rgba(201,168,76,0.3);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--gold);
-      flex-shrink: 0;
+      margin-bottom: 18px;
     }
 
-    .author-info strong {
-      display: block;
-      font-size: 0.875rem;
+    .why-card h3 {
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--navy);
+      margin-bottom: 10px;
     }
 
-    .author-info span {
-      font-size: 0.78rem;
+    .why-card p {
+      font-size: 0.92rem;
       color: var(--gray);
+      line-height: 1.7;
     }
 
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 16px;
-    }
-
-    .star {
-      color: var(--gold);
-      font-size: 0.95rem;
-    }
-
-    .proof-bar {
-      max-width: 900px;
-      margin: 0 auto 56px;
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-
-    .proof-stat {
-      text-align: center;
-    }
-
-    .proof-stat strong {
-      display: block;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .proof-stat span {
-      font-size: 0.82rem;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    @media (max-width: 900px) {
-      .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; }
+    @media (max-width: 700px) {
+      .why-grid { grid-template-columns: 1fr; }
     }
 
     /* ── BOTTOM CTA BAND ── */
@@ -928,7 +864,7 @@
       padding: 90px 5%;
       text-align: center;
       position: relative;
-      overflow: hidden;
+      overflow: clip;
     }
 
     .cta-band::before {
@@ -1167,8 +1103,8 @@
 
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-number">$500K+</span>
-            <span class="stat-label">Max Funding</span>
+            <span class="stat-number">$20M+</span>
+            <span class="stat-label">MAX FUNDING</span>
           </div>
           <div class="stat">
             <span class="stat-number">24–48h</span>
@@ -1202,13 +1138,13 @@
 
           <div class="form-group">
             <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" autocomplete="name" maxlength="100" />
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name" autocomplete="name" maxlength="100" />
             <div class="error-msg" id="fullName-err">Please enter your full name.</div>
           </div>
 
           <div class="form-group">
             <label for="businessName">Business Name</label>
-            <input type="text" id="businessName" name="businessName" placeholder="Acme Co." autocomplete="organization" maxlength="150" />
+            <input type="text" id="businessName" name="businessName" placeholder="Main Street Diner" autocomplete="organization" maxlength="150" />
             <div class="error-msg" id="businessName-err">Please enter your business name.</div>
           </div>
 
@@ -1220,8 +1156,26 @@
 
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@acmeco.com" autocomplete="email" maxlength="254" />
+            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" maxlength="254" />
             <div class="error-msg" id="email-err">Please enter a valid email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="creditScore">Estimated Credit Score</label>
+            <div class="select-wrapper">
+              <select id="creditScore" name="creditScore">
+                <option value="">Select credit score range...</option>
+                <option value="excellent">Excellent (750+)</option>
+                <option value="good">Good (700–749)</option>
+                <option value="fair">Fair (650–699)</option>
+                <option value="poor">Poor (600–649)</option>
+                <option value="bad">Bad (Below 600)</option>
+                <option value="unknown">I Don't Know</option>
+              </select>
+            </div>
+            <label for="creditScoreExact" style="display:block; font-size:0.82rem; font-weight:500; color:var(--gray); margin-top:12px; margin-bottom:6px;">Or enter your exact score:</label>
+            <input type="number" id="creditScoreExact" name="creditScoreExact" placeholder="e.g. 680" min="300" max="850" />
+            <p style="margin-top:8px; font-size:0.75rem; color:var(--gray); line-height:1.55;">Checking your options here does <strong>NOT</strong> affect your credit score. No hard pull.</p>
           </div>
 
           <div class="form-group">
@@ -1296,9 +1250,9 @@
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h3>$5,000 to $500,000+ Available</h3>
-        <p>Whether you need $10K to cover a slow month or $300K to open a second location, we have funding options for businesses at every stage and size.</p>
-        <span class="amount-badge">$5K · $50K · $250K · $500K+</span>
+        <h3>$5,000 to $20,000,000+ Available</h3>
+        <p>Whether you need $10K to cover a slow month or $5M to open a new location, we have funding options for businesses at every stage and size.</p>
+        <span class="amount-badge">$5K · $100K · $1M · $20M+</span>
       </div>
 
       <div class="what-card">
@@ -1329,7 +1283,7 @@
       <div class="step-card">
         <div class="step-number">1</div>
         <h3>Fill Out One Short Form</h3>
-        <p>Tell us your business name, monthly revenue, and how much you're looking for. No tax returns, no financial statements required to get started.</p>
+        <p>Fill out our short 2-minute form at trustlinebiz.com. Tell us your business name, monthly revenue, and estimated credit score. No tax returns or financial statements required to get started.</p>
         <span class="step-time">Takes ~2 minutes</span>
       </div>
 
@@ -1428,100 +1382,60 @@
 
 
   <!-- ═══════════════════════════════════════════
-       SECTION 5: TRUST / TESTIMONIALS
+       SECTION 5: WHY TRUSTLINE
   ════════════════════════════════════════════ -->
-  <section class="testimonials">
-    <div class="section-label">Real Results</div>
-    <h2 class="section-title">Business Owners Who Got Funded</h2>
-    <p class="section-sub">We don't just talk about fast funding — here's what it looks like in practice.</p>
+  <section class="why-trustline">
+    <div class="section-label">Why TrustLine</div>
+    <h2 class="section-title">Why Business Owners Choose TrustLine</h2>
+    <p class="section-sub">We built TrustLine around the things business owners actually care about — privacy, speed, and simplicity.</p>
 
-    <!-- Proof bar -->
-    <div class="proof-bar">
-      <div class="proof-stat">
-        <strong>3,200+</strong>
-        <span>Businesses Funded</span>
-      </div>
-      <div class="proof-stat">
-        <strong>$180M+</strong>
-        <span>Total Capital Deployed</span>
-      </div>
-      <div class="proof-stat">
-        <strong>24 hrs</strong>
-        <span>Avg. Approval Time</span>
-      </div>
-      <div class="proof-stat">
-        <strong>91%</strong>
-        <span>Approval Rate</span>
-      </div>
-    </div>
+    <div class="why-grid">
 
-    <div class="testimonials-grid">
-
-      <div class="testimonial-card">
-        <div class="testimonial-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="11" width="18" height="11" rx="2" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M7 11V7a5 5 0 0110 0v4" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
         </div>
-        <div class="testimonial-quote">"</div>
-        <p>I needed $75,000 fast to cover inventory before the holiday season. Two banks said no. TrustLine had me approved the same day I applied and the money was in my account 48 hours later. I still can't believe how easy it was.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">MT</div>
-          <div class="author-info">
-            <strong>Marcus T.</strong>
-            <span>Retail Store Owner — Miami, FL</span>
-          </div>
-        </div>
+        <h3>Your Data Is Never Sold</h3>
+        <p>We never share or sell your information to third parties. One team handles your application start to finish.</p>
       </div>
 
-      <div class="testimonial-card">
-        <div class="testimonial-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7v5c0 5.25 3.9 10.15 9 11.35C17.1 22.15 21 17.25 21 12V7L12 2z" stroke="#c9a84c" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M8.5 12l2.5 2.5 4.5-4.5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-        <div class="testimonial-quote">"</div>
-        <p>We had a big contract on the table but needed $40,000 to hire the crew and buy materials to take it. TrustLine matched us with a lender in under an hour. We took the contract, delivered the job, and paid off the advance in 90 days.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">DK</div>
-          <div class="author-info">
-            <strong>David K.</strong>
-            <span>Landscaping Company — Phoenix, AZ</span>
-          </div>
-        </div>
+        <h3>No Hard Credit Pull</h3>
+        <p>Checking your options here has zero impact on your credit score.</p>
       </div>
 
-      <div class="testimonial-card">
-        <div class="testimonial-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="9" cy="12" r="4" stroke="#c9a84c" stroke-width="1.8"/>
+            <circle cx="15" cy="12" r="4" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M12 8v8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
         </div>
-        <div class="testimonial-quote">"</div>
-        <p>My credit isn't perfect and I assumed I'd be rejected. TrustLine looks at your revenue and cash flow, not just your credit score. I was approved for $28,000 within 24 hours and used it to upgrade my salon equipment. Best decision I made.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">SR</div>
-          <div class="author-info">
-            <strong>Sandra R.</strong>
-            <span>Salon Owner — Dallas, TX</span>
-          </div>
-        </div>
+        <h3>100+ Lender Network</h3>
+        <p>We match you against our entire lender network in minutes so you get the best available offer.</p>
       </div>
 
-    </div>
+      <div class="why-card">
+        <div class="why-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="16" height="16" rx="3" stroke="#c9a84c" stroke-width="1.8"/>
+            <path d="M8 12h8M8 8h8M8 16h5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>One Application. Done.</h3>
+        <p>No reapplying to multiple lenders. Submit once and we do the shopping for you.</p>
+      </div>
 
-    <!-- Trust badges row -->
-    <div style="max-width:700px; margin: 48px auto 0; display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
-      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
-        <svg width="16" height="17" viewBox="0 0 13 14" fill="none"><path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="#a8863a" stroke-width="1.3" fill="none"/><path d="M4 7L6 9L9.5 5.5" stroke="#a8863a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        256-Bit SSL Encryption
-      </div>
-      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#a8863a" stroke-width="1.8"/><circle cx="12" cy="9" r="2.5" stroke="#a8863a" stroke-width="1.8"/></svg>
-        No Obligation Quote
-      </div>
-      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#a8863a" stroke-width="1.8"/><path d="M8 12l3 3 5-5" stroke="#a8863a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        No Credit Score Impact
-      </div>
-      <div style="display:flex; align-items:center; gap:8px; background:var(--white); border:1.5px solid var(--border); border-radius:10px; padding:12px 20px; font-size:0.82rem; font-weight:600; color:var(--navy);">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#a8863a" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#a8863a" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Your Info Is Never Sold
-      </div>
     </div>
   </section>
 
