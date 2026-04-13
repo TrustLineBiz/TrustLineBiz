@@ -20,3 +20,6 @@ Thumbs.db
 node_modules/
 dist/
 build/
+
+# Zip archives — source packages, don't commit binaries
+*.zip

@@ -29,6 +29,97 @@ This applies to all tasks including: lead research, content writing, ad creation
 
 ---
 
+## Installed Skills Directory
+
+Quick-reference for autonomous skill selection. Path prefix: `skills/`
+
+### Paid Advertising — `skills/claude-ads/claude-ads-main/`
+
+| Skill | Path | What it does |
+|-------|------|-------------|
+| `ads` | `ads/` | **Orchestrator.** Full multi-platform ad audit (250+ checks) across Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple — delegates to all sub-skills below |
+| `ads-audit` | `skills/ads-audit/` | Parallel multi-platform account audit; generates a health score (0–100) per platform and an aggregate score |
+| `ads-google` | `skills/ads-google/` | Google Ads deep analysis — 80 checks across Search, Performance Max, Display, YouTube, and Demand Gen |
+| `ads-meta` | `skills/ads-meta/` | Meta Ads deep analysis — 50 checks for Facebook/Instagram, Pixel/CAPI health, creative fatigue, Advantage+ |
+| `ads-tiktok` | `skills/ads-tiktok/` | TikTok Ads deep analysis — 28 checks, Smart+ campaigns, TikTok Shop, Spark Ads, safe zone compliance |
+| `ads-linkedin` | `skills/ads-linkedin/` | LinkedIn Ads deep analysis — 27 B2B checks including Thought Leader Ads, ABM, and predictive audiences |
+| `ads-microsoft` | `skills/ads-microsoft/` | Microsoft/Bing Ads analysis — 24 checks, Google import validation, Copilot ad integration |
+| `ads-apple` | `skills/ads-apple/` | Apple Ads (Search Ads) analysis for iOS app advertisers — CPPs, MMP attribution, TAP coverage, bid health |
+| `ads-youtube` | `skills/ads-youtube/` | YouTube Ads analysis — all video formats, Demand Gen, Shorts, CTV, VAC→Demand Gen migration |
+| `ads-creative` | `skills/ads-creative/` | Cross-platform creative quality audit — detects fatigue, format diversity gaps, platform-native compliance |
+| `ads-landing` | `skills/ads-landing/` | Landing page quality for ad campaigns — message match, speed, mobile UX, trust signals, CRO |
+| `ads-budget` | `skills/ads-budget/` | Budget allocation and bidding strategy review — 70/20/10 rule, 3× Kill Rule, scaling readiness |
+| `ads-math` | `skills/ads-math/` | PPC financial calculator — CPA/ROAS/CPL, break-even analysis, budget forecasting, LTV:CAC, MER |
+| `ads-competitor` | `skills/ads-competitor/` | Competitor ad intelligence — copy themes, estimated spend, keyword gaps, creative strategy across all platforms |
+| `ads-plan` | `skills/ads-plan/` | Strategic ad plan — platform selection, campaign architecture, budget phasing, creative roadmap |
+| `ads-test` | `skills/ads-test/` | A/B test design — hypothesis framework, statistical significance calculator, sample size and duration estimator |
+| `ads-dna` | `skills/ads-dna/` | Brand DNA extractor — scans a URL and outputs `brand-profile.json` (colors, tone, typography, imagery) |
+| `ads-create` | `skills/ads-create/` | Campaign brief generator — reads `brand-profile.json` and outputs structured `campaign-brief.md` |
+| `ads-generate` | `skills/ads-generate/` | AI ad image generator — reads `campaign-brief.md` and produces platform-sized creatives via banana-claude |
+| `ads-photoshoot` | `skills/ads-photoshoot/` | AI product photography — generates 5 styles (Studio, Floating, Ingredient, In Use, Lifestyle) via banana-claude |
+
+### Lead Generation & Outreach — `skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `lead-research-assistant` | Lead research and prospect profiling |
+| `composio-skills/apollo-automation` | Apollo.io automation for prospect sourcing and sequencing |
+| `composio-skills/instantly-automation` | Instantly.ai automation for cold email campaigns |
+| `composio-skills/phantombuster-automation` | PhantomBuster automation for LinkedIn/web scraping |
+| `composio-skills/hunter-automation` | Hunter.io automation for email finding and verification |
+| `composio-skills/lemlist-automation` | Lemlist automation for personalized outreach sequences |
+
+### Ads & Marketing — `skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `competitive-ads-extractor` | Extracts and analyzes competitor ad creative from public sources |
+| `content-research-writer` | Researches a topic and writes long-form content |
+| `composio-skills/facebook-automation` | Facebook page/ads automation via Composio |
+| `composio-skills/googleads-automation` | Google Ads automation via Composio |
+| `composio-skills/metaads-automation` | Meta Ads automation via Composio |
+| `twitter-algorithm-optimizer` | Optimizes content for Twitter/X algorithmic reach |
+
+### SEO & Analytics — `skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `composio-skills/google-search-console-automation` | GSC data pulls, indexing checks, query analysis |
+| `composio-skills/semrush-automation` | SEMrush automation for keyword research and site audits |
+| `composio-skills/ahrefs-automation` | Ahrefs automation for backlink analysis and keyword tracking |
+
+### Design & Content — `skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `canvas-design` | Canvas-based design generation with bundled font library (80+ typefaces) |
+
+### CRM & Productivity — `skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `composio-skills/capsule-crm-automation` | Capsule CRM automation for contact and deal management |
+| `composio-skills/attio-automation` | Attio CRM automation for pipeline and relationship management |
+
+### Documents — `skills/document-skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `docx` | Create and edit Word documents with full OOXML schema support |
+| `pdf` | Read, fill, annotate, and generate PDFs |
+| `pptx` | Build PowerPoint presentations from HTML or structured data |
+| `xlsx` | Create and manipulate Excel spreadsheets |
+
+### Developer Tools — `skills/`
+
+| Skill | What it does |
+|-------|-------------|
+| `skill-creator` | Scaffolds new skills with proper SKILL.md structure and packaging scripts |
+| `webapp-testing` | Automated browser/UI testing with Playwright-style scripting |
+| `mcp-builder` | Builds, evaluates, and deploys MCP servers (Node or Python) |
+
+---
+
 ## Stack
 
 | Layer       | Technology                             |
