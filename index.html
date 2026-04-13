@@ -8,20 +8,21 @@
   <title>TrustLine | Fast Business Funding — $5K to $20M+ in 24–48 Hours</title>
   <meta name="description" content="TrustLine connects small business owners with 100+ private lenders. Get $5,000 to $20,000,000+ in working capital with approvals as fast as 24 hours. No bank required. Free to apply." />
   <meta name="keywords" content="business funding, small business loans, merchant cash advance, fast business capital, working capital, business financing" />
-  <link rel="canonical" href="https://trustlinebiz.netlify.app/" />
+  <link rel="canonical" href="https://trustlinebiz.com/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
   <!-- Open Graph (social sharing / SMS previews) -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://trustlinebiz.netlify.app/" />
+  <meta property="og:url" content="https://trustlinebiz.com/" />
   <meta property="og:title" content="TrustLine | Fast Business Funding — No Bank Hassles" />
   <meta property="og:description" content="Access $5K–$20M+ in working capital. 100+ lenders. Decisions in 24–48 hours. Free to apply, no credit impact." />
-  <meta property="og:image" content="https://trustlinebiz.netlify.app/og-image.png" />
+  <meta property="og:image" content="https://trustlinebiz.com/og-image.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="TrustLine | Fast Business Funding" />
   <meta name="twitter:description" content="Get matched with 100+ lenders in minutes. $5K–$20M+. No bank required." />
-  <meta name="twitter:image" content="https://trustlinebiz.netlify.app/og-image.png" />
+  <meta name="twitter:image" content="https://trustlinebiz.com/og-image.png" />
 
   <!-- Trust / Indexing -->
   <meta name="robots" content="index, follow" />
@@ -34,7 +35,7 @@
     "@context": "https://schema.org",
     "@type": "FinancialService",
     "name": "TrustLine",
-    "url": "https://trustlinebiz.netlify.app",
+    "url": "https://trustlinebiz.com",
     "description": "TrustLine connects small business owners with 100+ private lenders for fast working capital from $5,000 to $20,000,000+.",
     "areaServed": "US",
     "serviceType": "Business Funding",
@@ -1191,13 +1192,13 @@
 
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" maxlength="14" />
             <div class="error-msg" id="phone-err">Please enter a valid phone number.</div>
           </div>
 
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@acmeco.com" autocomplete="email" />
+            <input type="email" id="email" name="email" placeholder="jane@acmeco.com" autocomplete="email" maxlength="254" />
             <div class="error-msg" id="email-err">Please enter a valid email address.</div>
           </div>
 
@@ -1615,8 +1616,7 @@
         body:    new URLSearchParams(new FormData(this)).toString()
       })
       .then(() => {
-        document.getElementById('quoteForm').style.display = 'none';
-        document.getElementById('formSuccess').classList.add('visible');
+        window.location.href = '/thank-you';
       })
       .catch(() => {
         btn.textContent  = 'Check My Funding Options →';

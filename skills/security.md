@@ -6,14 +6,17 @@ No API keys, no backend, no database. Main risks: form spam, XSS in lead-finder,
 clickjacking, content injection.
 
 ## Security Controls in Place
-- [x] HTTP security headers via `netlify.toml` (CSP, X-Frame-Options, etc.)
+- [x] HTTP security headers via `netlify.toml` (CSP, X-Frame-Options, HSTS, etc.)
+- [x] HSTS (`Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`)
+- [x] `upgrade-insecure-requests` in CSP (coerces stray http:// sub-resources to https://)
+- [x] `object-src 'none'` in CSP (blocks Flash/plugins explicitly)
 - [x] Honeypot field on homepage form (bot-field)
 - [x] Netlify Forms spam filtering (built-in)
 - [x] Full HTML escaping in lead-finder (`esc()` escapes `& < > " '`)
 - [x] URL sanitization in lead-finder (`safeHref()` blocks `javascript:` URIs)
 - [x] `noindex, nofollow` on lead-finder (prevents search indexing)
 - [x] `rel="noopener noreferrer"` on all external links from lead-finder
-- [x] `maxlength` attributes on form inputs (prevents oversized payloads)
+- [x] `maxlength` attributes on ALL form inputs (prevents oversized payloads)
 - [x] `form-action 'self'` in CSP (forms can only submit to same origin)
 - [x] `frame-ancestors 'none'` in CSP (prevents clickjacking)
 

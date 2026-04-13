@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Received | TrustLine</title>
+  <meta name="description" content="Your funding application has been received. A TrustLine specialist will be in touch within 1 business hour." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://trustlinebiz.com/thank-you" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#081426" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #0d1f3c;
+      --navy-light: #162d55;
+      --navy-dark:  #081426;
+      --gold:       #c9a84c;
+      --gold-light: #e0be72;
+      --gold-dark:  #a8863a;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray:       #8a95a3;
+      --text:       #1a2940;
+      --border:     #dde3ea;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+    nav {
+      background: var(--navy-dark);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      height: 68px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      flex-shrink: 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px;
+      color: var(--navy-dark); letter-spacing: -1px;
+    }
+    .logo-text { font-size: 1.35rem; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+    .logo-text span { color: var(--gold); }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 5%;
+    }
+    .confirmation-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 56px 52px;
+      max-width: 620px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(13,31,60,0.1);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .success-icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 10px 30px rgba(34,197,94,0.3);
+    }
+    .confirmation-card h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    .confirmation-card > p {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .confirmation-card > p strong { color: var(--navy); }
+    .next-steps {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 28px 32px;
+      text-align: left;
+      margin-bottom: 36px;
+    }
+    .next-steps-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--gold-dark);
+      margin-bottom: 18px;
+    }
+    .step-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .step-row:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 26px; height: 26px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.73rem; font-weight: 900;
+      color: var(--navy-dark);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-row p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .step-row strong { color: var(--navy); }
+    .btn-home {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy-dark);
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 15px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+      box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+    }
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201,168,76,0.5);
+      filter: brightness(1.05);
+    }
+    footer {
+      background: var(--navy-dark);
+      padding: 28px 5%;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.45); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+    @media (max-width: 600px) {
+      .confirmation-card { padding: 36px 24px; }
+      .next-steps { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-mark">TL</div>
+      <span class="logo-text">Trust<span>Line</span></span>
+    </a>
+  </nav>
+
+  <main>
+    <div class="confirmation-card">
+
+      <div class="success-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12L10 17L19 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h1>Application Received — We're On It</h1>
+      <p>Your funding inquiry is in our system. A TrustLine specialist will review your profile and reach out within <strong>1 business hour</strong> with your personalized options.</p>
+
+      <div class="next-steps">
+        <div class="next-steps-label">What Happens Next</div>
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <p><strong>Check your email and phone.</strong> A specialist will contact you within 1 business hour to discuss your options and answer any questions.</p>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <p><strong>Review your matched offers.</strong> We compare your profile across 100+ lenders and surface the best available funding options for your business.</p>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <p><strong>Get funded in 24–48 hours.</strong> Once you select an offer and complete the lender's final steps, funds are deposited directly into your business account.</p>
+        </div>
+      </div>
+
+      <a href="/" class="btn-home">← Back to Home</a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+    </div>
+    <div class="footer-copy">© 2026 TrustLine Biz · trustlinebiz.com · All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

@@ -28,7 +28,9 @@ trustlinebiz/
 ├── lead-finder.html    # Internal CRM / pipeline tool (PRIVATE — noindex)
 ├── privacy.html        # Privacy policy
 ├── terms.html          # Terms & conditions
-├── thank-you.html      # Post-form confirmation (TODO: create)
+├── thank-you.html      # Post-form confirmation (redirected to after successful form submit)
+├── 404.html            # Custom 404 error page (served by Netlify catch-all redirect)
+├── favicon.svg         # SVG favicon — TL gold square, works in all modern browsers
 ├── netlify.toml        # Netlify config: security headers, cache, redirects
 ├── robots.txt          # SEO: disallows lead-finder, declares sitemap
 ├── sitemap.xml         # SEO: public pages only
@@ -167,14 +169,15 @@ privacy, terms). They are NOT shared via an external file yet.
 1. **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo +
    headline. Place in repo root. Referenced in OG/Twitter meta tags.
 
-2. **Create `thank-you.html`** — post-form confirmation page for conversion
-   tracking. Netlify can redirect to it via the form's `action` attribute.
+2. ~~**Create `thank-you.html`**~~ — DONE. Form JS now redirects to `/thank-you`
+   after a successful Netlify Forms POST. Page matches site design.
 
 3. **Connect repo to Netlify** — currently no git remote. Push to GitHub/GitLab
    and connect in the Netlify dashboard for auto-deploys on push.
 
-4. **Set custom domain** — update all URLs in `index.html` and `netlify.toml`
-   from `trustlinebiz.netlify.app` to `trustlinebiz.com` once DNS is live.
+4. ~~**Set custom domain URLs**~~ — DONE. All canonical, OG, and structured-data
+   URLs in `index.html` now use `trustlinebiz.com` (consistent with sitemap/robots).
+   When DNS is live, verify the Netlify custom domain setting in the dashboard.
 
 5. **Netlify form notifications** — configure email/Slack notifications for new
    leads in Netlify Dashboard → Forms → lead-capture → Settings.
