@@ -279,74 +279,104 @@ privacy, terms). They are NOT shared via an external file yet.
 
 ---
 
+## Infrastructure Changes
+
+**Migrated April 14, 2026: Netlify → Cloudflare Pages + Web3Forms**
+
+Netlify was dropped due to billing limits taking the site down.
+
+| Layer | Before | After |
+|-------|--------|-------|
+| Hosting | Netlify (free tier) | Cloudflare Pages |
+| Form submission | Netlify Forms (POST to `/`) | Web3Forms API (`https://api.web3forms.com/submit`) |
+| Security headers | `netlify.toml` `[[headers]]` block | `_headers` file (Cloudflare Pages native) |
+| Redirects | `netlify.toml` `[[redirects]]` block | `_redirects` file (Cloudflare Pages native) |
+| Build config | `netlify.toml` | No config file needed — static site, root deploy |
+
+### Web3Forms Details
+- **Access key:** `f9f861ea-7483-421e-804b-da15dbeeb0df`
+- **Account email:** `jm.02.contact@gmail.com`
+- Submissions POST as JSON to `https://api.web3forms.com/submit`
+- Hidden `<input name="access_key">` in form + key set in `doSubmit()` JS
+- Honeypot field renamed from `bot-field` → `botcheck` (Web3Forms convention)
+- On success: redirects to `/thank-you.html`
+- On failure: shows inline error, re-enables submit button
+
+### Files Changed
+- `netlify.toml` — **deleted**
+- `_headers` — **created** (security headers: X-Frame-Options, CSP-adjacent headers, X-Robots-Tag for lead-finder)
+- `_redirects` — **created** (extensionless URLs + 404 fallback)
+- `index.html` — form tag stripped of `data-netlify` attrs, `doSubmit()` rewritten for Web3Forms
+
+### Current Blocker — SSL
+Cloudflare Pages is connected to the GitHub repo and deploying successfully, but the custom domain (`trustlinebiz.com`) has an SSL/TLS issue preventing the live site from loading. The Cloudflare Pages deployment itself is healthy. Resolution requires correcting the SSL/TLS encryption mode in the Cloudflare dashboard (likely needs to be set to **Full** or **Full (Strict)** rather than Flexible) and/or verifying DNS records point correctly to Cloudflare Pages.
+
+---
+
 ## Current Status & Next Steps
 
-**As of: April 13, 2026**
+**As of: April 14, 2026**
 
 ---
 
 ### What Has Been Built and Deployed
 
-#### Site (all pages live on trustlinebiz.com)
+#### Site (all pages — pending SSL resolution)
 
 | File | Status | Notes |
 |------|--------|-------|
-| `index.html` | ✅ Live | Homepage + lead form, scheduling modal, Meta Pixel |
-| `thank-you.html` | ✅ Live | Jack intro card, What Happens Next, Cal.com button |
-| `privacy.html` | ✅ Live | Footer disclaimer, Pixel |
-| `terms.html` | ✅ Live | Updated notice language, footer disclaimer |
-| `404.html` | ✅ Live | On-brand error page, footer disclaimer |
-| `favicon.svg` | ✅ Live | Gold TL square, all pages |
+| `index.html` | ✅ Built | Homepage + lead form, scheduling modal, Meta Pixel, Web3Forms |
+| `thank-you.html` | ✅ Built | Jack intro card, What Happens Next, 15-min Cal.com button |
+| `additional-info.html` | ✅ Built | Post-Meta-ad landing page — fires Lead pixel event on load |
+| `privacy.html` | ✅ Built | Footer disclaimer, Pixel |
+| `terms.html` | ✅ Built | Updated notice language, footer disclaimer |
+| `404.html` | ✅ Built | On-brand error page, footer disclaimer |
+| `favicon.svg` | ✅ Built | Gold TL square, all pages |
 
 #### Lead Capture Form (index.html)
-- Netlify Forms AJAX submission — leads land in Netlify Dashboard → Forms → `lead-capture`
+- **Web3Forms** submission — leads emailed to `jm.02.contact@gmail.com` on every submit
 - Fields captured: Full Name, Business Name, Phone, Email, Estimated Credit Score, Credit Score (exact), Monthly Revenue, Prefer Text, Preferred Call Time, UTM params (source/medium/campaign/content)
-- Honeypot bot filter active (`bot-field`)
-- Form redirects to `/thank-you` on success
+- Honeypot bot filter active (`botcheck`)
+- Form redirects to `/thank-you.html` on success
 
 #### Scheduling Popup Modal (index.html)
 - Intercepts form submit after validation passes
-- **Today tab**: reads current EST time, shows 30-min slots with 15-min buffer, up to 4 hours ahead, 8AM–8PM EST window only. Shows "no slots" message if window has passed.
-- **Another Day tab**: next 3 days as date pills → selects 30-min slots for that day, 8AM–8PM EST
-- "Secure My Spot →" button: sets `preferredCallTime` hidden field, shows green confirmation for 1.5s, then submits
-- "Skip scheduling" link: bypasses modal, submits form directly
-- Escape key + overlay click close the modal
-- `preferredCallTime` value is sent through Netlify Forms with every lead
+- **Today tab**: reads current EST time, shows 30-min slots with 15-min buffer, up to 4 hours ahead, 8AM–8PM EST window only
+- **Another Day tab**: next 3 days as date pills → 30-min slots for that day, 8AM–8PM EST
+- "Secure My Spot →" button: sets `preferredCallTime` hidden field, confirms for 1.5s, then submits
+- "Skip scheduling" link: bypasses modal, submits directly
+- `preferredCallTime` value is included in every Web3Forms submission
 
 #### Meta Pixel Tracking
 - **Pixel ID:** `1232015482337066`
-- Installed on all 5 HTML pages
+- Installed on all 6 HTML pages
 - Events firing:
   - `PageView` — all pages on load
   - `InitiateCheckout` — fires when user first focuses the lead form
-  - `Lead` — fires on `thank-you.html` load (i.e., after successful form submission)
-- UTM hidden fields capture `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` from URL and pass them through Netlify Forms
+  - `Lead` — fires on `thank-you.html` and `additional-info.html` load
+- UTM hidden fields capture `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` from URL
 
-#### Meta Ads Strategy (ready to launch)
-- Files in `meta-ads-strategy/`:
-  - `brand-profile.json` — brand DNA (colors, voice, compliance flags)
-  - `ADS-STRATEGY.md` — full platform strategy + 3 message angles
-  - `CAMPAIGN-ARCHITECTURE.md` — exact campaign tree, Instant Form spec, TCPA language
-  - `BUDGET-PLAN.md` — $150 vs $300 scenario, 3× Kill Rule, scale triggers
-  - `CREATIVE-BRIEF.md` — copy + visual direction for all 3 ads
-  - `TRACKING-SETUP.md` — Pixel code, UTM structure
-  - `IMPLEMENTATION-ROADMAP.md` — 8-week plan, pre-launch checklist
-  - `AD-COPY.md` — final copy deck: primary text (A/B), headlines, descriptions, CTAs, UTM links
-- Ad creatives ready: `ad-creative-1.png` (pain), `ad-creative-2.png` (speed), `ad-creative-3.png` (trust/privacy)
-- Facebook profile picture ready: `trustline-profile.png` (400×400px)
+#### Meta Ads (built and paused)
+- **Meta Business Manager:** ✅ Created
+- **Facebook Page:** ✅ Live — profile photo uploaded (`trustline-profile.png`)
+- **Ad campaign:** ✅ Built and published — currently **paused** (pending SSL fix)
+- **Instant Form:** ✅ Created with TCPA language — post-submit URL set to `https://trustlinebiz.com/additional-info`
+- **Special Ad Category:** Credit set on campaign
+- **Special Ad Audience:** Configured — Florida targeting, no age/gender/ZIP restrictions
+- Ad creatives: `ad-creative-1.png` (pain), `ad-creative-2.png` (speed), `ad-creative-3.png` (trust)
+- Strategy files: `meta-ads-strategy/` — full copy deck, budget plan, architecture, roadmap
 
-#### thank-you.html
-- Jack personal intro card: gold left-border, JM avatar, St. Petersburg FL, direct contact promise
-- What Happens Next: 3-step flow, 4 business hours, 8AM–8PM EST, 7 days a week
-- Cal.com booking button → `https://cal.com/jack-mcgrath-gxkgbb/trustline-funding-consultation`
-- Footer disclaimer on all pages
+#### Cal.com Booking Link
+- **URL:** `https://cal.com/jack-mcgrath-gxkgbb/trustline-funding-consultation`
+- **Status:** ✅ Verified — configured for 8AM–8PM EST, Mon–Sun
+- Used on: `thank-you.html` → "Book Your 15-Minute Call →" and `additional-info.html` → "Book Your Call →"
+- The scheduling modal on `index.html` is a separate in-page time picker — captures preferred call time via form field
 
 #### Copy & Content State
 - USP: **We never sell customer data** — one team, one conversation, your data stays with us forever
 - Response time: **4 business hours, 8AM–8PM EST, 7 days a week**
 - After-hours: followed up first thing next morning
-- Fake testimonials section removed — replaced with "Why Business Owners Choose TrustLine" 4-card trust grid
-- All funding amounts updated to $5K–$20M+
+- Funding range: **$5K–$20M+** across all pages
 - Hero stats: $20M+ MAX FUNDING · 24–48h · 100+ Lenders · 2 min
 
 ---
@@ -357,77 +387,72 @@ privacy, terms). They are NOT shared via an external file yet.
 |------|--------|
 | Meta Pixel installed | ✅ Done — ID `1232015482337066` |
 | Pixel firing (PageView, Lead, InitiateCheckout) | ✅ Done |
-| Ad creatives (3 images) | ✅ Ready in repo root |
-| Copy deck | ✅ Ready in `meta-ads-strategy/AD-COPY.md` |
-| Facebook Page profile photo | ✅ Ready (`trustline-profile.png`) |
-| Meta Business Manager account | ❌ Not created yet |
-| Ad account created | ❌ Not created yet |
-| Special Ad Category: Credit set | ❌ Pending campaign creation |
-| Campaigns created and launched | ❌ Not started |
-| Instant Form created (with TCPA language) | ❌ Not started |
-| Special Ad Audience configured | ❌ Not started |
-
-**When ready to launch ads:** Follow `meta-ads-strategy/IMPLEMENTATION-ROADMAP.md` pre-launch checklist. Budget: $150–300/month ($5–10/day). Florida targeting only. Special Ad Category: Credit — no age/gender/ZIP targeting; use Special Ad Audiences not Lookalooks.
-
----
-
-### Cal.com Booking Link
-
-- **URL:** `https://cal.com/jack-mcgrath-gxkgbb/trustline-funding-consultation`
-- Used on: `thank-you.html` → "Book Your 5-Minute Call →" button (opens in new tab)
-- The **scheduling modal on index.html** is a separate in-page time picker (not Cal.com) — it captures preferred call time as a Netlify form field so Jack can call the user proactively
-- **Needs verification:** Confirm the Cal.com event is configured for 8AM–8PM EST, 7 days a week availability
+| Ad creatives (3 images) | ✅ Done — polished and in repo root |
+| Copy deck | ✅ Done — `meta-ads-strategy/AD-COPY.md` |
+| Facebook Page + profile photo | ✅ Done — page live, `trustline-profile.png` uploaded |
+| Meta Business Manager account | ✅ Done |
+| Ad account created | ✅ Done |
+| Special Ad Category: Credit set | ✅ Done |
+| Campaign built and published | ✅ Done — **currently paused** pending SSL fix |
+| Instant Form created (with TCPA language) | ✅ Done — post-submit → `/additional-info` |
+| Special Ad Audience configured | ✅ Done — Florida, Special Ad Audience |
+| Campaign unpaused and running | ⏸ Blocked — waiting on SSL resolution |
 
 ---
 
 ### What Still Needs to Be Done
 
-#### High Priority — Before Running Ads
-- [ ] **Netlify form notifications** — Netlify Dashboard → Forms → `lead-capture` → Notifications → add email alert so every new lead sends an email to Jack immediately
-- [ ] **Verify Cal.com availability** — confirm `trustline-funding-consultation` event is set to 8AM–8PM EST, Mon–Sun
-- [ ] **Test full form flow** — fill out the form on the live site, confirm: (1) lead appears in Netlify Forms, (2) preferredCallTime is captured, (3) UTM params pass through, (4) thank-you page loads correctly, (5) Cal.com button works
-- [ ] **Create Meta Business Manager** and ad account at business.facebook.com
-- [ ] **Verify Pixel is firing** — install Meta Pixel Helper Chrome extension, visit trustlinebiz.com, confirm PageView fires; submit form, confirm Lead fires on thank-you page
-- [ ] **Set up Facebook Page** — upload `trustline-profile.png` as profile photo
-- [ ] **Launch first Meta campaign** — follow `meta-ads-strategy/IMPLEMENTATION-ROADMAP.md`
+#### Immediate — Current Blocker
+- [ ] **Resolve SSL on Cloudflare** — site is down. In Cloudflare dashboard: check SSL/TLS encryption mode (set to **Full** or **Full (Strict)**). Verify DNS A/CNAME records point to Cloudflare Pages deployment. Once SSL is green, unpause the Meta campaign.
+
+#### High Priority — After SSL Resolved
+- [ ] **Unpause Meta campaign** — campaign is built, creatives uploaded, Instant Form live. Just needs site to be up, then set to Active.
+- [ ] **Test full form flow end-to-end** — submit the form on the live site, confirm: (1) email arrives at `jm.02.contact@gmail.com`, (2) `preferredCallTime` is in the email, (3) UTM params pass through, (4) thank-you page loads, (5) Cal.com button works
+- [ ] **Verify Pixel is firing** — Meta Pixel Helper Chrome extension on live site: confirm PageView fires on homepage, Lead fires on thank-you and additional-info pages
 
 #### Medium Priority
-- [ ] **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo + tagline. Currently referenced in OG/Twitter meta tags but file doesn't exist. Affects link previews when the URL is shared on social or SMS.
-- [ ] **Git remote cleanup** — every push shows "repository moved" warning. Fix with: `git remote set-url origin https://github.com/TrustLineBiz/TrustLineBiz.git`
-- [ ] **Netlify form spam filter** — once leads start coming in, monitor for spam. Netlify has a built-in Akismet filter that can be enabled.
+- [ ] **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo + tagline. Referenced in OG/Twitter meta tags but file doesn't exist. Affects link previews on social/SMS.
+- [ ] **Fix git remote URL warning** — every push shows "repository moved". Fix: `git remote set-url origin https://github.com/TrustLineBiz/TrustLineBiz.git`
 
 #### Lower Priority / Future
-- [ ] **Lead Finder integration** — `lead-finder.html` stores leads in `localStorage` only. As volume grows, consider pushing Netlify form submissions to a real CRM via Zapier (Netlify → Zapier → CRM). See `meta-ads-strategy/TRACKING-SETUP.md` for Zapier instructions.
-- [ ] **A/B test scheduling modal** — after 50+ form submissions, test whether the modal increases or decreases conversion rate vs the skip option
-- [ ] **Scale Meta budget** — after 2–3 weeks of data, apply 20% weekly scale to the winning ad. See `meta-ads-strategy/BUDGET-PLAN.md` scale triggers.
-- [ ] **Add Stories/Reels creatives** — current ad images are 1080×1080 only. Add 1080×1920 versions for Reels/Stories placements using same brand tokens.
+- [ ] **Lead Finder integration** — `lead-finder.html` stores leads in `localStorage` only. As volume grows, consider Web3Forms → Zapier → CRM pipeline.
+- [ ] **A/B test scheduling modal** — after 50+ submissions, test modal vs skip conversion rate
+- [ ] **Scale Meta budget** — after 2–3 weeks of data, apply 20% weekly scale to winning ad. See `meta-ads-strategy/BUDGET-PLAN.md`
+- [ ] **Add Stories/Reels creatives** — current images are 1080×1080 only. Add 1080×1920 versions for Reels/Stories placements.
 
 ---
 
 ## Known TODOs (Manual Steps Required)
 
-1. **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo +
+1. **Resolve Cloudflare SSL** — set encryption mode to Full/Full (Strict) in Cloudflare dashboard. This is the current site blocker.
+
+2. **Unpause Meta campaign** — once SSL is resolved and site loads cleanly.
+
+3. **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo +
    headline. Place in repo root. Referenced in OG/Twitter meta tags but missing.
 
-2. ~~**Create `thank-you.html`**~~ — DONE.
+4. ~~**Create `thank-you.html`**~~ — DONE.
 
-3. ~~**Connect repo to Netlify**~~ — DONE. Pushes to GitHub auto-deploy.
+5. ~~**Connect repo to Netlify**~~ — SUPERSEDED. Migrated to Cloudflare Pages.
 
-4. ~~**Set custom domain URLs**~~ — DONE.
+6. ~~**Set custom domain URLs**~~ — DONE.
 
-5. **Netlify form notifications** — configure email notifications for new leads in
-   Netlify Dashboard → Forms → lead-capture → Notifications.
+7. ~~**Netlify form notifications**~~ — SUPERSEDED. Web3Forms emails every submission directly.
 
-6. ~~**Replace placeholder stats**~~ — DONE. Fake testimonials section deleted entirely.
-   Replaced with "Why Business Owners Choose TrustLine" trust grid.
+8. ~~**Replace placeholder stats**~~ — DONE.
+
+9. ~~**Create Meta Business Manager**~~ — DONE.
+
+10. ~~**Launch first Meta campaign**~~ — DONE (paused pending SSL).
 
 ---
 
 ## Prompt Engineering Notes for Future AI Sessions
 
 When asking Claude to work on this project:
-- Always mention "TrustLineBiz.com static site, Netlify-hosted, no build step"
+- Always mention "TrustLineBiz.com static site, **Cloudflare Pages**-hosted, no build step"
 - This CLAUDE.md gives full context — tell Claude to read it first
-- For form changes, always specify "keep Netlify Forms fetch submission intact"
-- For security changes, reference `netlify.toml` for header config
+- For form changes: form submits via **Web3Forms** JSON POST — do NOT revert to Netlify Forms patterns
+- Security headers are in `_headers` file, NOT `netlify.toml` (deleted)
+- Redirects are in `_redirects` file, NOT `netlify.toml`
 - For copy changes, use `skills/copywriting.md` for tone/style guide
