@@ -279,28 +279,147 @@ privacy, terms). They are NOT shared via an external file yet.
 
 ---
 
+## Current Status & Next Steps
+
+**As of: April 13, 2026**
+
+---
+
+### What Has Been Built and Deployed
+
+#### Site (all pages live on trustlinebiz.com)
+
+| File | Status | Notes |
+|------|--------|-------|
+| `index.html` | ✅ Live | Homepage + lead form, scheduling modal, Meta Pixel |
+| `thank-you.html` | ✅ Live | Jack intro card, What Happens Next, Cal.com button |
+| `privacy.html` | ✅ Live | Footer disclaimer, Pixel |
+| `terms.html` | ✅ Live | Updated notice language, footer disclaimer |
+| `404.html` | ✅ Live | On-brand error page, footer disclaimer |
+| `favicon.svg` | ✅ Live | Gold TL square, all pages |
+
+#### Lead Capture Form (index.html)
+- Netlify Forms AJAX submission — leads land in Netlify Dashboard → Forms → `lead-capture`
+- Fields captured: Full Name, Business Name, Phone, Email, Estimated Credit Score, Credit Score (exact), Monthly Revenue, Prefer Text, Preferred Call Time, UTM params (source/medium/campaign/content)
+- Honeypot bot filter active (`bot-field`)
+- Form redirects to `/thank-you` on success
+
+#### Scheduling Popup Modal (index.html)
+- Intercepts form submit after validation passes
+- **Today tab**: reads current EST time, shows 30-min slots with 15-min buffer, up to 4 hours ahead, 8AM–8PM EST window only. Shows "no slots" message if window has passed.
+- **Another Day tab**: next 3 days as date pills → selects 30-min slots for that day, 8AM–8PM EST
+- "Secure My Spot →" button: sets `preferredCallTime` hidden field, shows green confirmation for 1.5s, then submits
+- "Skip scheduling" link: bypasses modal, submits form directly
+- Escape key + overlay click close the modal
+- `preferredCallTime` value is sent through Netlify Forms with every lead
+
+#### Meta Pixel Tracking
+- **Pixel ID:** `1232015482337066`
+- Installed on all 5 HTML pages
+- Events firing:
+  - `PageView` — all pages on load
+  - `InitiateCheckout` — fires when user first focuses the lead form
+  - `Lead` — fires on `thank-you.html` load (i.e., after successful form submission)
+- UTM hidden fields capture `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` from URL and pass them through Netlify Forms
+
+#### Meta Ads Strategy (ready to launch)
+- Files in `meta-ads-strategy/`:
+  - `brand-profile.json` — brand DNA (colors, voice, compliance flags)
+  - `ADS-STRATEGY.md` — full platform strategy + 3 message angles
+  - `CAMPAIGN-ARCHITECTURE.md` — exact campaign tree, Instant Form spec, TCPA language
+  - `BUDGET-PLAN.md` — $150 vs $300 scenario, 3× Kill Rule, scale triggers
+  - `CREATIVE-BRIEF.md` — copy + visual direction for all 3 ads
+  - `TRACKING-SETUP.md` — Pixel code, UTM structure
+  - `IMPLEMENTATION-ROADMAP.md` — 8-week plan, pre-launch checklist
+  - `AD-COPY.md` — final copy deck: primary text (A/B), headlines, descriptions, CTAs, UTM links
+- Ad creatives ready: `ad-creative-1.png` (pain), `ad-creative-2.png` (speed), `ad-creative-3.png` (trust/privacy)
+- Facebook profile picture ready: `trustline-profile.png` (400×400px)
+
+#### thank-you.html
+- Jack personal intro card: gold left-border, JM avatar, St. Petersburg FL, direct contact promise
+- What Happens Next: 3-step flow, 4 business hours, 8AM–8PM EST, 7 days a week
+- Cal.com booking button → `https://cal.com/jack-mcgrath-gxkgbb/trustline-funding-consultation`
+- Footer disclaimer on all pages
+
+#### Copy & Content State
+- USP: **We never sell customer data** — one team, one conversation, your data stays with us forever
+- Response time: **4 business hours, 8AM–8PM EST, 7 days a week**
+- After-hours: followed up first thing next morning
+- Fake testimonials section removed — replaced with "Why Business Owners Choose TrustLine" 4-card trust grid
+- All funding amounts updated to $5K–$20M+
+- Hero stats: $20M+ MAX FUNDING · 24–48h · 100+ Lenders · 2 min
+
+---
+
+### Meta Ads Account Setup Status
+
+| Item | Status |
+|------|--------|
+| Meta Pixel installed | ✅ Done — ID `1232015482337066` |
+| Pixel firing (PageView, Lead, InitiateCheckout) | ✅ Done |
+| Ad creatives (3 images) | ✅ Ready in repo root |
+| Copy deck | ✅ Ready in `meta-ads-strategy/AD-COPY.md` |
+| Facebook Page profile photo | ✅ Ready (`trustline-profile.png`) |
+| Meta Business Manager account | ❌ Not created yet |
+| Ad account created | ❌ Not created yet |
+| Special Ad Category: Credit set | ❌ Pending campaign creation |
+| Campaigns created and launched | ❌ Not started |
+| Instant Form created (with TCPA language) | ❌ Not started |
+| Special Ad Audience configured | ❌ Not started |
+
+**When ready to launch ads:** Follow `meta-ads-strategy/IMPLEMENTATION-ROADMAP.md` pre-launch checklist. Budget: $150–300/month ($5–10/day). Florida targeting only. Special Ad Category: Credit — no age/gender/ZIP targeting; use Special Ad Audiences not Lookalooks.
+
+---
+
+### Cal.com Booking Link
+
+- **URL:** `https://cal.com/jack-mcgrath-gxkgbb/trustline-funding-consultation`
+- Used on: `thank-you.html` → "Book Your 5-Minute Call →" button (opens in new tab)
+- The **scheduling modal on index.html** is a separate in-page time picker (not Cal.com) — it captures preferred call time as a Netlify form field so Jack can call the user proactively
+- **Needs verification:** Confirm the Cal.com event is configured for 8AM–8PM EST, 7 days a week availability
+
+---
+
+### What Still Needs to Be Done
+
+#### High Priority — Before Running Ads
+- [ ] **Netlify form notifications** — Netlify Dashboard → Forms → `lead-capture` → Notifications → add email alert so every new lead sends an email to Jack immediately
+- [ ] **Verify Cal.com availability** — confirm `trustline-funding-consultation` event is set to 8AM–8PM EST, Mon–Sun
+- [ ] **Test full form flow** — fill out the form on the live site, confirm: (1) lead appears in Netlify Forms, (2) preferredCallTime is captured, (3) UTM params pass through, (4) thank-you page loads correctly, (5) Cal.com button works
+- [ ] **Create Meta Business Manager** and ad account at business.facebook.com
+- [ ] **Verify Pixel is firing** — install Meta Pixel Helper Chrome extension, visit trustlinebiz.com, confirm PageView fires; submit form, confirm Lead fires on thank-you page
+- [ ] **Set up Facebook Page** — upload `trustline-profile.png` as profile photo
+- [ ] **Launch first Meta campaign** — follow `meta-ads-strategy/IMPLEMENTATION-ROADMAP.md`
+
+#### Medium Priority
+- [ ] **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo + tagline. Currently referenced in OG/Twitter meta tags but file doesn't exist. Affects link previews when the URL is shared on social or SMS.
+- [ ] **Git remote cleanup** — every push shows "repository moved" warning. Fix with: `git remote set-url origin https://github.com/TrustLineBiz/TrustLineBiz.git`
+- [ ] **Netlify form spam filter** — once leads start coming in, monitor for spam. Netlify has a built-in Akismet filter that can be enabled.
+
+#### Lower Priority / Future
+- [ ] **Lead Finder integration** — `lead-finder.html` stores leads in `localStorage` only. As volume grows, consider pushing Netlify form submissions to a real CRM via Zapier (Netlify → Zapier → CRM). See `meta-ads-strategy/TRACKING-SETUP.md` for Zapier instructions.
+- [ ] **A/B test scheduling modal** — after 50+ form submissions, test whether the modal increases or decreases conversion rate vs the skip option
+- [ ] **Scale Meta budget** — after 2–3 weeks of data, apply 20% weekly scale to the winning ad. See `meta-ads-strategy/BUDGET-PLAN.md` scale triggers.
+- [ ] **Add Stories/Reels creatives** — current ad images are 1080×1080 only. Add 1080×1920 versions for Reels/Stories placements using same brand tokens.
+
+---
+
 ## Known TODOs (Manual Steps Required)
 
 1. **Create `og-image.png`** (1200×630px) — navy background, TrustLine logo +
-   headline. Place in repo root. Referenced in OG/Twitter meta tags.
+   headline. Place in repo root. Referenced in OG/Twitter meta tags but missing.
 
-2. ~~**Create `thank-you.html`**~~ — DONE. Form JS now redirects to `/thank-you`
-   after a successful Netlify Forms POST. Page matches site design.
+2. ~~**Create `thank-you.html`**~~ — DONE.
 
-3. **Connect repo to Netlify** — currently no git remote. Push to GitHub/GitLab
-   and connect in the Netlify dashboard for auto-deploys on push.
+3. ~~**Connect repo to Netlify**~~ — DONE. Pushes to GitHub auto-deploy.
 
-4. ~~**Set custom domain URLs**~~ — DONE. All canonical, OG, and structured-data
-   URLs in `index.html` now use `trustlinebiz.com` (consistent with sitemap/robots).
-   When DNS is live, verify the Netlify custom domain setting in the dashboard.
+4. ~~**Set custom domain URLs**~~ — DONE.
 
-5. **Netlify form notifications** — configure email/Slack notifications for new
-   leads in Netlify Dashboard → Forms → lead-capture → Settings.
+5. **Netlify form notifications** — configure email notifications for new leads in
+   Netlify Dashboard → Forms → lead-capture → Notifications.
 
-6. **Replace placeholder stats** in testimonials section:
-   - "3,200+ Businesses Funded" → real number
-   - "$180M+ Total Capital Deployed" → real number
-   - "91% Approval Rate" → real number
+6. ~~**Replace placeholder stats**~~ — DONE. Fake testimonials section deleted entirely.
+   Replaced with "Why Business Owners Choose TrustLine" trust grid.
 
 ---
 
