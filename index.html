@@ -1276,10 +1276,9 @@
         <h2>See How Much Your Business Qualifies For</h2>
         <p>Free check. No obligation. Won't affect your credit score.</p>
 
-        <form id="quoteForm" name="lead-capture" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
-          <input type="hidden" name="form-name" value="lead-capture" />
+        <form id="quoteForm" novalidate>
           <!-- Honeypot: bots fill this, humans don't -->
-          <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="text" name="botcheck" style="display:none" />
           <!-- UTM tracking: populated from URL params by JS -->
           <input type="hidden" name="preferredCallTime" id="preferredCallTime" />
           <input type="hidden" name="utm_source" id="utm_source" />
@@ -1906,12 +1905,24 @@
       btn.textContent = 'Checking options…';
       btn.disabled = true;
       errDiv.style.display = 'none';
-      fetch('/', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body:    new URLSearchParams(new FormData(form)).toString()
+      var formData = new FormData(form);
+      var data = Object.fromEntries(formData);
+      data.access_key = 'YOUR_WEB3FORMS_KEY';
+      data.subject = 'New TrustLine Lead: ' + (data['full-name'] || data.name || data.fullName || 'Unknown');
+      data.from_name = 'TrustLine Biz';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       })
-      .then(function() { window.location.href = '/thank-you'; })
+      .then(function(res) { return res.json(); })
+      .then(function(result) {
+        if (result.success) {
+          window.location.href = '/thank-you.html';
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
       .catch(function() {
         btn.textContent = 'Check My Funding Options →';
         btn.disabled = false;
