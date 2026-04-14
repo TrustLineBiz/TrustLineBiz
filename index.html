@@ -974,6 +974,184 @@
 
     .trust-badge svg { color: var(--gold); }
 
+    /* ── CUSTOM CHECKBOX ── */
+    .custom-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .custom-checkbox-input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+      pointer-events: none;
+    }
+    .custom-checkbox-box {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .custom-checkbox-check {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .custom-checkbox-input:checked + .custom-checkbox-box {
+      background: var(--gold);
+    }
+    .custom-checkbox-input:checked + .custom-checkbox-box .custom-checkbox-check {
+      opacity: 1;
+    }
+    .custom-checkbox-text {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    /* ── SCHEDULING MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,20,38,0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 36px 32px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: var(--gray);
+      cursor: pointer;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1;
+    }
+    .modal-close:hover { background: var(--off-white); color: var(--navy); }
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+    .modal-sub {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+    .modal-tabs {
+      display: flex;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .modal-tab {
+      flex: 1;
+      padding: 10px 8px;
+      background: none;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .modal-tab.active { background: var(--navy); color: #fff; }
+    .modal-tab:not(.active):hover { background: var(--off-white); color: var(--navy); }
+    .modal-panel { min-height: 72px; }
+    .slots-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .slot-pill {
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .slot-pill:hover { border-color: var(--gold); }
+    .slot-pill.selected { background: var(--gold); border-color: var(--gold); color: var(--navy-dark); }
+    .day-pill {
+      padding: 8px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .day-pill:hover { border-color: var(--gold); }
+    .day-pill.selected { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .modal-note { font-size: 0.75rem; color: var(--gray); font-style: italic; margin-top: 10px; }
+    .modal-no-slots { font-size: 0.85rem; color: var(--gray); padding: 14px 0; text-align: center; }
+    .modal-error { font-size: 0.78rem; color: #e05252; text-align: center; margin: 0 0 10px; }
+    .modal-btn-confirm {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy-dark);
+      font-size: 0.975rem;
+      font-weight: 800;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+      transition: filter 0.15s, transform 0.15s;
+      margin-bottom: 14px;
+      margin-top: 16px;
+    }
+    .modal-btn-confirm:hover { filter: brightness(1.06); transform: translateY(-1px); }
+    .modal-btn-confirm:disabled { cursor: default; transform: none; }
+    .modal-skip {
+      display: block;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray);
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      padding: 0;
+    }
+    .modal-skip:hover { color: var(--navy); }
+    @media (max-width: 520px) { .modal-card { padding: 32px 18px 24px; } }
+
     .footer-links {
       display: flex;
       gap: 20px;
@@ -1076,7 +1254,7 @@
           </div>
           <div class="trust-strip-item">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            $5K–$500K+
+            $5K–$20M+
           </div>
           <div class="trust-strip-item">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#c9a84c" stroke-width="2"/><path d="M12 7v5l3 2.5" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1131,6 +1309,7 @@
           <!-- Honeypot: bots fill this, humans don't -->
           <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <!-- UTM tracking: populated from URL params by JS -->
+          <input type="hidden" name="preferredCallTime" id="preferredCallTime" />
           <input type="hidden" name="utm_source" id="utm_source" />
           <input type="hidden" name="utm_medium" id="utm_medium" />
           <input type="hidden" name="utm_campaign" id="utm_campaign" />
@@ -1192,9 +1371,14 @@
             <div class="error-msg" id="revenue-err">Please select your monthly revenue range.</div>
           </div>
 
-          <label style="display:flex; align-items:center; gap:10px; margin-bottom:18px; cursor:pointer;">
-            <input type="checkbox" id="preferText" name="preferText" value="yes" style="width:16px; height:16px; accent-color:var(--gold); cursor:pointer; flex-shrink:0;" />
-            <span style="font-size:0.82rem; color:var(--gray); line-height:1.4;">I prefer to be contacted by text message</span>
+          <label class="custom-checkbox-label" for="preferText">
+            <input type="checkbox" id="preferText" name="preferText" value="yes" class="custom-checkbox-input" />
+            <span class="custom-checkbox-box" aria-hidden="true">
+              <svg class="custom-checkbox-check" width="11" height="9" viewBox="0 0 11 9" fill="none">
+                <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="custom-checkbox-text">I prefer to be contacted by text message</span>
           </label>
 
           <button type="submit" class="btn-primary">Check My Funding Options →</button>
@@ -1516,7 +1700,7 @@
       e.target.value = v;
     });
 
-    // Form validation & submission
+    // Form validation — runs on submit, opens modal if valid
     document.getElementById('quoteForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -1529,7 +1713,6 @@
       };
 
       let valid = true;
-
       Object.entries(fields).forEach(([key, { el, validate }]) => {
         const err = document.getElementById(key + '-err');
         if (!validate(el.value)) {
@@ -1544,26 +1727,8 @@
 
       if (!valid) return;
 
-      const btn      = this.querySelector('.btn-primary');
-      const errDiv   = document.getElementById('submit-error');
-      btn.textContent = 'Checking options…';
-      btn.disabled    = true;
-      errDiv.style.display = 'none';
-
-      // POST to Netlify Forms — this is what actually captures the lead
-      fetch('/', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body:    new URLSearchParams(new FormData(this)).toString()
-      })
-      .then(() => {
-        window.location.href = '/thank-you';
-      })
-      .catch(() => {
-        btn.textContent  = 'Check My Funding Options →';
-        btn.disabled     = false;
-        errDiv.style.display = 'block';
-      });
+      // Validation passed — open scheduling modal
+      window._openScheduleModal(this);
     });
 
     // Clear error on input
@@ -1601,6 +1766,221 @@
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
+  </script>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCHEDULING MODAL
+  ════════════════════════════════════════════ -->
+  <div id="scheduleModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Schedule your call" style="display:none;">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close scheduling modal">✕</button>
+
+      <h2 class="modal-title">One Last Step — Pick Your Call Time</h2>
+      <p class="modal-sub">A funding specialist will call you at your chosen time. Spots fill fast — lock yours in now.</p>
+
+      <div class="modal-tabs" role="tablist">
+        <button class="modal-tab active" id="tabToday" role="tab" aria-selected="true" aria-controls="panelToday">Today</button>
+        <button class="modal-tab" id="tabOther" role="tab" aria-selected="false" aria-controls="panelOther">Another Day</button>
+      </div>
+
+      <div id="panelToday" class="modal-panel" role="tabpanel">
+        <div id="todaySlots" class="slots-grid"></div>
+      </div>
+
+      <div id="panelOther" class="modal-panel" role="tabpanel" style="display:none;">
+        <div id="dayPills" class="slots-grid"></div>
+        <div id="otherSlots" class="slots-grid" style="display:none;"></div>
+        <p class="modal-note">We limit scheduling to 3 days out to ensure you get the fastest response possible.</p>
+      </div>
+
+      <div id="modalError" class="modal-error" style="display:none;" role="alert">Please select a call time to continue.</div>
+
+      <button id="modalConfirm" class="modal-btn-confirm" aria-label="Confirm selected call time">Secure My Spot →</button>
+      <button id="modalSkip" class="modal-skip" aria-label="Skip scheduling and submit form">Skip scheduling — I'll wait for a call</button>
+    </div>
+  </div>
+
+  <script>
+  // ── SCHEDULING MODAL ─────────────────────────────────────────
+  (function() {
+    var modal       = document.getElementById('scheduleModal');
+    var selectedTime = null;
+    var selectedForm = null;
+
+    function getNowEST() {
+      return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    }
+
+    function fmtTime(h, m) {
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var hr   = h % 12 || 12;
+      return hr + ':' + (m === 0 ? '00' : m) + ' ' + ampm;
+    }
+
+    function fmtDate(d) {
+      return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'America/New_York' });
+    }
+
+    function getSlots(isToday) {
+      var slots = [], s = 8, e = 20;
+      if (isToday) {
+        var now    = getNowEST();
+        var cutoff = new Date(now.getTime() + 15 * 60000);
+        var maxH   = now.getHours() + 4;
+        for (var h = s; h < Math.min(e, maxH + 1); h++) {
+          for (var m = 0; m < 60; m += 30) {
+            var t = new Date(now); t.setHours(h, m, 0, 0);
+            if (t >= cutoff) slots.push({ h: h, m: m, label: fmtTime(h, m) });
+          }
+        }
+      } else {
+        for (var h = s; h < e; h++) {
+          for (var m = 0; m < 60; m += 30) slots.push({ h: h, m: m, label: fmtTime(h, m) });
+        }
+      }
+      return slots;
+    }
+
+    function renderSlots(container, slots, dateLabel) {
+      container.innerHTML = '';
+      if (!slots.length) {
+        container.innerHTML = '<p class="modal-no-slots">No slots available today — please schedule for another day.</p>';
+        return;
+      }
+      slots.forEach(function(slot) {
+        var pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'slot-pill';
+        pill.textContent = slot.label;
+        pill.setAttribute('aria-label', 'Select ' + slot.label + (dateLabel ? ' on ' + dateLabel : ' today') + ' EST');
+        pill.addEventListener('click', function() {
+          container.querySelectorAll('.slot-pill').forEach(function(p) { p.classList.remove('selected'); });
+          pill.classList.add('selected');
+          selectedTime = (dateLabel || 'Today') + ' at ' + slot.label + ' EST';
+          document.getElementById('modalError').style.display = 'none';
+        });
+        container.appendChild(pill);
+      });
+    }
+
+    function switchTab(tab) {
+      var tT = document.getElementById('tabToday'), tO = document.getElementById('tabOther');
+      var pT = document.getElementById('panelToday'), pO = document.getElementById('panelOther');
+      selectedTime = null;
+      if (tab === 'today') {
+        tT.classList.add('active');    tO.classList.remove('active');
+        tT.setAttribute('aria-selected','true');  tO.setAttribute('aria-selected','false');
+        pT.style.display = '';         pO.style.display = 'none';
+      } else {
+        tO.classList.add('active');    tT.classList.remove('active');
+        tO.setAttribute('aria-selected','true');  tT.setAttribute('aria-selected','false');
+        pO.style.display = '';         pT.style.display = 'none';
+      }
+    }
+
+    function openModal(form) {
+      selectedForm = form;
+      selectedTime = null;
+
+      // Today slots
+      renderSlots(document.getElementById('todaySlots'), getSlots(true), null);
+
+      // Day pills
+      var dayPills = document.getElementById('dayPills');
+      dayPills.innerHTML = '';
+      var otherSlots = document.getElementById('otherSlots');
+      otherSlots.innerHTML = '';
+      otherSlots.style.display = 'none';
+
+      var now = getNowEST();
+      for (var i = 1; i <= 3; i++) {
+        (function(i) {
+          var d = new Date(now); d.setDate(d.getDate() + i);
+          var label = fmtDate(d);
+          var pill = document.createElement('button');
+          pill.type = 'button'; pill.className = 'day-pill';
+          pill.textContent = label;
+          pill.setAttribute('aria-label', 'Schedule for ' + label);
+          pill.addEventListener('click', function() {
+            dayPills.querySelectorAll('.day-pill').forEach(function(p){ p.classList.remove('selected'); });
+            pill.classList.add('selected');
+            selectedTime = null;
+            otherSlots.style.display = 'flex';
+            renderSlots(otherSlots, getSlots(false), label);
+          });
+          dayPills.appendChild(pill);
+        })(i);
+      }
+
+      switchTab('today');
+      document.getElementById('modalError').style.display = 'none';
+      var confirmBtn = document.getElementById('modalConfirm');
+      confirmBtn.textContent = 'Secure My Spot →';
+      confirmBtn.style.background = '';
+      confirmBtn.disabled = false;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function doSubmit(form) {
+      var btn    = form.querySelector('.btn-primary');
+      var errDiv = document.getElementById('submit-error');
+      btn.textContent = 'Checking options…';
+      btn.disabled = true;
+      errDiv.style.display = 'none';
+      fetch('/', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body:    new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function() { window.location.href = '/thank-you'; })
+      .catch(function() {
+        btn.textContent = 'Check My Funding Options →';
+        btn.disabled = false;
+        errDiv.style.display = 'block';
+      });
+    }
+
+    document.getElementById('tabToday').addEventListener('click', function() { switchTab('today'); });
+    document.getElementById('tabOther').addEventListener('click', function() { switchTab('other'); });
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display !== 'none') closeModal();
+    });
+
+    document.getElementById('modalConfirm').addEventListener('click', function() {
+      if (!selectedTime) {
+        document.getElementById('modalError').style.display = 'block';
+        return;
+      }
+      document.getElementById('preferredCallTime').value = selectedTime;
+      var btn = this;
+      btn.textContent = '✓ Your spot is reserved';
+      btn.style.background = 'linear-gradient(135deg,#16a34a,#22c55e)';
+      btn.disabled = true;
+      setTimeout(function() {
+        closeModal();
+        doSubmit(selectedForm);
+      }, 1500);
+    });
+
+    document.getElementById('modalSkip').addEventListener('click', function() {
+      closeModal();
+      doSubmit(selectedForm);
+    });
+
+    window._openScheduleModal = openModal;
+  })();
   </script>
 </body>
 </html>
