@@ -172,42 +172,26 @@
     .trust-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 0;
+      justify-content: center;
+      gap: 12px;
       margin-bottom: 28px;
-      border: 1px solid rgba(201,168,76,0.3);
-      border-radius: 10px;
-      overflow: hidden;
-      width: fit-content;
     }
 
     .trust-strip-item {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
-      font-size: 0.78rem;
+      padding: 8px 18px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 999px;
+      background: rgba(201,168,76,0.08);
+      font-size: 0.82rem;
       font-weight: 600;
       color: rgba(255,255,255,0.85);
-      letter-spacing: 0.3px;
-      background: rgba(201,168,76,0.08);
       white-space: nowrap;
     }
 
-    .trust-strip-item + .trust-strip-item {
-      border-left: 1px solid rgba(201,168,76,0.25);
-    }
-
     .trust-strip-item svg { flex-shrink: 0; }
-
-    @media (max-width: 900px) {
-      .trust-strip { width: 100%; justify-content: center; }
-      .trust-strip-item { flex: 1 1 auto; justify-content: center; }
-      .trust-strip-item + .trust-strip-item { border-left: none; border-top: 1px solid rgba(201,168,76,0.25); }
-    }
-
-    @media (max-width: 500px) {
-      .trust-strip-item { font-size: 0.72rem; padding: 9px 12px; }
-    }
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
@@ -592,17 +576,6 @@
       position: relative;
     }
 
-    .steps-grid::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: calc(16.67% + 20px);
-      right: calc(16.67% + 20px);
-      height: 2px;
-      background: linear-gradient(90deg, rgba(201,168,76,0.4), rgba(201,168,76,0.15));
-      z-index: 0;
-    }
-
     .step-card {
       text-align: center;
       padding: 36px 24px;
@@ -653,7 +626,6 @@
 
     @media (max-width: 700px) {
       .steps-grid { grid-template-columns: 1fr; max-width: 360px; }
-      .steps-grid::before { display: none; }
     }
 
     /* ── BENEFITS ── */
@@ -1288,7 +1260,7 @@
             <span class="stat-number">24–48h</span>
             <span class="stat-label">Approval Time</span>
           </div>
-          <div class="stat">
+          <div class="stat" style="align-items:center; text-align:center;">
             <span class="stat-number">100+</span>
             <span class="stat-label">Lender Network</span>
           </div>
@@ -1598,8 +1570,8 @@
             <path d="M8.5 12l2.5 2.5 4.5-4.5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h3>No Hard Credit Pull</h3>
-        <p>Checking your options here has zero impact on your credit score.</p>
+        <h3>No Hard Credit Pull — Ever From Us</h3>
+        <p>Submitting this form does not pull your credit. Zero impact, zero inquiry. If you move forward with a lender application, that lender may perform their own credit check as part of their underwriting process — but that happens on their end, not ours.</p>
       </div>
 
       <div class="why-card">
