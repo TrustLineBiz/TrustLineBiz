@@ -1277,6 +1277,7 @@
         <p>Free check. No obligation. Won't affect your credit score.</p>
 
         <form id="quoteForm" novalidate>
+          <input type="hidden" name="access_key" value="f9f861ea-7483-421e-804b-da15dbeeb0df" />
           <!-- Honeypot: bots fill this, humans don't -->
           <input type="text" name="botcheck" style="display:none" />
           <!-- UTM tracking: populated from URL params by JS -->
@@ -1907,7 +1908,7 @@
       errDiv.style.display = 'none';
       var formData = new FormData(form);
       var data = Object.fromEntries(formData);
-      data.access_key = 'YOUR_WEB3FORMS_KEY';
+      data.access_key = 'f9f861ea-7483-421e-804b-da15dbeeb0df';
       data.subject = 'New TrustLine Lead: ' + (data['full-name'] || data.name || data.fullName || 'Unknown');
       data.from_name = 'TrustLine Biz';
       fetch('https://api.web3forms.com/submit', {
