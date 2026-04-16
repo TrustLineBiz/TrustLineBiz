@@ -186,9 +186,64 @@
     .footer-links a:hover { color: var(--gold-light); }
     .footer-disclaimer { width:100%; font-size:0.72rem; color:rgba(255,255,255,0.25); line-height:1.65; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); text-align:center; }
     .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 24px 0;
+      margin-bottom: 28px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-bar-item { text-align: center; }
+    .stats-bar-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .stats-bar-label {
+      font-size: 0.72rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+    .bullet-list {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 28px 32px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .bullet-list-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--gold-dark);
+      margin-bottom: 18px;
+    }
+    .bullet-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .bullet-item:last-child { margin-bottom: 0; }
+    .bullet-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .bullet-item p { font-size: 0.9rem; color: var(--text); line-height: 1.65; }
     @media (max-width: 600px) {
       .confirmation-card { padding: 36px 24px; }
-      .next-steps { padding: 22px 20px; }
+      .bullet-list { padding: 22px 20px; }
+      .stats-bar { gap: 20px; }
     }
   </style>
 </head>
@@ -210,8 +265,8 @@
         </svg>
       </div>
 
-      <h1>Application Received — We're On It</h1>
-      <p>I'll personally reach out to you within <strong>4 business hours</strong> — Monday through Sunday, 8AM to 8PM EST. Inquiries submitted outside those hours will be followed up the next morning.</p>
+      <h1>You're In. A Funding Specialist Will Reach Out Shortly.</h1>
+      <p>A TrustLine funding specialist will review your information and reach out shortly during business hours. Applications submitted after hours will be followed up the next business day.</p>
 
       <!-- Personal intro card -->
       <div style="display:flex; gap:16px; align-items:flex-start; background:var(--off-white); border-left:4px solid var(--gold); border-radius:12px; padding:20px 22px; margin-bottom:28px; text-align:left;">
@@ -219,19 +274,38 @@
         <p style="font-size:0.88rem; color:var(--text); line-height:1.7; margin:0;">Hi, I'm Jack — a funding specialist based in St. Petersburg, FL. I personally review every inquiry that comes through TrustLine. You won't hear from a call center or get passed around to strangers. It's just me, and I'll reach out to you directly within 4 business hours to discuss your options and help you take the next step.</p>
       </div>
 
-      <div class="next-steps">
-        <div class="next-steps-label">What Happens Next</div>
-        <div class="step-row">
-          <div class="step-num">1</div>
-          <p><strong>Check your email and phone.</strong> I'll reach out to you directly within 4 business hours (8AM–8PM EST, 7 days a week). Anything submitted after 8PM will be followed up first thing the next morning. No call centers. No strangers. Just me.</p>
+      <div class="bullet-list">
+        <div class="bullet-list-label">What Happens Next</div>
+        <div class="bullet-item">
+          <div class="bullet-dot"></div>
+          <p>A TrustLine specialist will review your information and reach out during business hours (8AM–8PM EST, 7 days a week)</p>
         </div>
-        <div class="step-row">
-          <div class="step-num">2</div>
-          <p><strong>Review your matched offers.</strong> We compare your profile across 100+ lenders and surface the best available funding options for your business.</p>
+        <div class="bullet-item">
+          <div class="bullet-dot"></div>
+          <p>Have your <strong>last 4 months of bank statements</strong> ready to speed up the process</p>
         </div>
-        <div class="step-row">
-          <div class="step-num">3</div>
-          <p><strong>Get funded by your matched lender in 24–48 hours.</strong> Once you select an offer and complete the lender's final steps, they deposit funds directly into your business account. TrustLine does not handle or hold any funds.</p>
+        <div class="bullet-item">
+          <div class="bullet-dot"></div>
+          <p>You'll receive <strong>matched funding options</strong> — no obligation to accept anything</p>
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stats-bar-item">
+          <div class="stats-bar-number">$20M+</div>
+          <div class="stats-bar-label">Max Funding</div>
+        </div>
+        <div class="stats-bar-item">
+          <div class="stats-bar-number">24–48h</div>
+          <div class="stats-bar-label">Approval Time</div>
+        </div>
+        <div class="stats-bar-item">
+          <div class="stats-bar-number">100+</div>
+          <div class="stats-bar-label">Lender Network</div>
+        </div>
+        <div class="stats-bar-item">
+          <div class="stats-bar-number">2 min</div>
+          <div class="stats-bar-label">Application</div>
         </div>
       </div>
 

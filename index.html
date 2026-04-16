@@ -1158,6 +1158,65 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
+    /* ── FORM STEP INDICATOR ── */
+    .form-step-indicator {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--gold-dark);
+      margin-bottom: 10px;
+    }
+
+    /* ── CHECKBOX ERROR STATE ── */
+    .custom-checkbox-label.checkbox-error .custom-checkbox-box {
+      border-color: #e05252;
+    }
+    .custom-checkbox-text a {
+      color: var(--gold-dark);
+      text-decoration: underline;
+    }
+    .custom-checkbox-text a:hover { color: var(--gold); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar-section {
+      background: var(--white);
+      padding: 52px 5%;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .stat-item .stat-label {
+      font-size: 0.78rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+    }
+    @media (max-width: 600px) {
+      .stats-row { gap: 28px; }
+      .stat-num { font-size: 1.6rem; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero-inner {
@@ -1239,9 +1298,9 @@
         </div>
 
         <!-- Headline -->
-        <h1>Get Matched With $5,000–$20,000,000 in<br /><em>Business Funding</em><br />in as Little as 24 Hours</h1>
+        <h1>Still Waiting on the Bank? Get Matched With <em>100+ Alternative Lenders</em></h1>
 
-        <p class="hero-sub">We connect your business with 100+ private lenders — not banks. No lengthy applications. No months of waiting. Submit one short form and a specialist will reach out with your matched funding options.</p>
+        <p class="hero-sub">Explore funding options as fast as <strong>24–48 hours for qualified businesses</strong>. One short form. No obligation.</p>
 
         <div class="hero-cta-group">
           <a href="#get-quote" class="btn-gold" style="font-size:1rem; padding:15px 34px;">Check My Funding Options →</a>
@@ -1273,6 +1332,7 @@
 
       <!-- FORM CARD -->
       <div class="form-card" id="get-quote">
+        <div class="form-step-indicator">Step 1 of 2 — Tell Us About Your Business</div>
         <h2>See How Much Your Business Qualifies For</h2>
         <p>Free check. No obligation. Won't affect your credit score.</p>
 
@@ -1353,6 +1413,17 @@
             <span class="custom-checkbox-text">I prefer to be contacted by text message</span>
           </label>
 
+          <label class="custom-checkbox-label" for="tcpaConsent">
+            <input type="checkbox" id="tcpaConsent" name="tcpaConsent" value="yes" class="custom-checkbox-input" />
+            <span class="custom-checkbox-box" aria-hidden="true">
+              <svg class="custom-checkbox-check" width="11" height="9" viewBox="0 0 11 9" fill="none">
+                <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="custom-checkbox-text">I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a> and consent to be contacted by TrustLine and its lending partners via phone, text, or email as described above.</span>
+          </label>
+          <div class="error-msg" id="tcpaConsent-err">You must agree to the terms to continue.</div>
+
           <button type="submit" class="btn-primary">Check My Funding Options →</button>
 
           <div id="submit-error" style="display:none; color:#e05252; font-size:0.78rem; text-align:center; margin-top:10px; line-height:1.5;">
@@ -1380,6 +1451,20 @@
           <p>A TrustLine funding specialist will reach out within <strong>4 business hours (8AM–8PM EST, 7 days a week)</strong> with your personalized options. Check your email and phone — we move fast.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       TRUST BAR
+  ════════════════════════════════════════════ -->
+  <section class="trust-bar-section">
+    <div class="section-label">Trusted by Business Owners Across All 50 States</div>
+    <div class="stats-row">
+      <div class="stat-item"><span class="stat-num">$20M+</span><span class="stat-label">Maximum Funding Available</span></div>
+      <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">Lenders in Our Network</span></div>
+      <div class="stat-item"><span class="stat-num">24–48h</span><span class="stat-label">Typical Approval Window</span></div>
+      <div class="stat-item"><span class="stat-num">2 Min</span><span class="stat-label">To Complete the Form</span></div>
     </div>
   </section>
 
@@ -1697,6 +1782,18 @@
         }
       });
 
+      // TCPA consent check
+      const tcpaEl = document.getElementById('tcpaConsent');
+      const tcpaErr = document.getElementById('tcpaConsent-err');
+      if (!tcpaEl.checked) {
+        tcpaEl.closest('.custom-checkbox-label').classList.add('checkbox-error');
+        tcpaErr.classList.add('visible');
+        valid = false;
+      } else {
+        tcpaEl.closest('.custom-checkbox-label').classList.remove('checkbox-error');
+        tcpaErr.classList.remove('visible');
+      }
+
       if (!valid) return;
 
       // Validation passed — open scheduling modal
@@ -1710,6 +1807,14 @@
         el.classList.remove('error');
         document.getElementById(id + '-err').classList.remove('visible');
       });
+    });
+
+    // Clear TCPA error on check
+    document.getElementById('tcpaConsent').addEventListener('change', function() {
+      if (this.checked) {
+        this.closest('.custom-checkbox-label').classList.remove('checkbox-error');
+        document.getElementById('tcpaConsent-err').classList.remove('visible');
+      }
     });
 
     // Capture UTM parameters from URL into hidden form fields
