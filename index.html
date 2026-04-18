@@ -397,20 +397,38 @@
     .form-trust svg { flex-shrink: 0; }
 
     .tcpa-consent {
-      font-size: 0.7rem;
-      color: #a0aab4;
-      line-height: 1.6;
+      font-size: 0.67rem;
+      color: rgba(255,255,255,0.40);
+      line-height: 1.65;
       margin-top: 12px;
       margin-bottom: 0;
       text-align: center;
+      padding: 0 4px;
     }
 
     .tcpa-consent a {
-      color: var(--gold-dark);
+      color: rgba(201,168,76,0.55);
       text-decoration: underline;
     }
 
     .tcpa-consent a:hover { color: var(--gold); }
+
+    /* ── FORM COL WRAPPER ── */
+    .form-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── FORM INLINE TRUST BADGES ── */
+    .form-inline-badges {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #1a6b3a;
+    }
 
     /* ── SUCCESS STATE ── */
     .form-success {
@@ -1213,7 +1231,11 @@
       margin-top: 0;
     }
     @media (max-width: 600px) {
-      .stats-row { gap: 28px; }
+      .stats-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 16px;
+      }
       .stat-num { font-size: 1.6rem; }
     }
 
@@ -1298,16 +1320,12 @@
         </div>
 
         <!-- Headline -->
-        <h1>Still Waiting on the Bank? Get Matched With <em>100+ Alternative Lenders</em></h1>
+        <h1>Still Waiting on the Bank?<br><em>Get Funded in 24–48 Hours — Without the Runaround.</em></h1>
 
-        <p class="hero-sub">Explore funding options as fast as <strong>24–48 hours for qualified businesses</strong>. One short form. No obligation.</p>
+        <p class="hero-sub">See your options in 2 minutes. No bank visit. No credit pull. No obligation.</p>
 
         <div class="hero-cta-group">
           <a href="#get-quote" class="btn-gold" style="font-size:1rem; padding:15px 34px;">Check My Funding Options →</a>
-          <a href="#how-it-works" class="btn-hero-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M10 9l4 3-4 3V9z" fill="currentColor"/></svg>
-            See How It Works
-          </a>
         </div>
 
         <div class="hero-stats">
@@ -1331,10 +1349,15 @@
       </div>
 
       <!-- FORM CARD -->
+      <div class="form-col">
       <div class="form-card" id="get-quote">
-        <div class="form-step-indicator">Step 1 of 2 — Tell Us About Your Business</div>
+        <div class="form-step-indicator">Takes 2 minutes — no credit pull</div>
         <h2>See How Much Your Business Qualifies For</h2>
         <p>Free check. No obligation. Won't affect your credit score.</p>
+        <div class="form-inline-badges">
+          <span>✓ No credit pull from us</span>
+          <span>✓ No bank visit required</span>
+        </div>
 
         <form id="quoteForm" novalidate>
           <input type="hidden" name="access_key" value="f9f861ea-7483-421e-804b-da15dbeeb0df" />
@@ -1430,8 +1453,6 @@
             Something went wrong. Please try again or call us directly.
           </div>
 
-          <p class="tcpa-consent">TrustLine is an independent lead generation service. We do not provide funding directly. By submitting this form, your information will be shared with third-party funding partners who make all credit and approval decisions. You consent to be contacted by TrustLine and those partners via phone, email, or SMS. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
-
           <div class="form-trust">
             <svg width="13" height="14" viewBox="0 0 13 14" fill="none">
               <path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="#8a95a3" stroke-width="1.2" fill="none"/>
@@ -1450,6 +1471,8 @@
           <h3>You're in the queue!</h3>
           <p>A TrustLine funding specialist will reach out within <strong>4 business hours (8AM–8PM EST, 7 days a week)</strong> with your personalized options. Check your email and phone — we move fast.</p>
         </div>
+      </div>
+      <p class="tcpa-consent">TrustLine is an independent lead generation service. We do not provide funding directly. By submitting this form, your information will be shared with third-party funding partners who make all credit and approval decisions. You consent to be contacted by TrustLine and those partners via phone, email, or SMS. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
       </div>
     </div>
   </section>
@@ -1475,7 +1498,7 @@
   <section class="what-we-do">
     <div class="section-label">What We Do</div>
     <h2 class="section-title">We Connect Small Businesses With the Right Funding — Fast</h2>
-    <p class="section-sub">TrustLine is not a bank or lender. We're an independent lead generation service. Submit one short form and we match your profile against 100+ third-party lenders competing for your business.</p>
+    <p class="section-sub">Submit one short form. We compare you across our lender network and show the best available options based on speed, terms, and fit. You decide if you want to move forward. No pressure.</p>
 
     <div class="what-grid">
 
