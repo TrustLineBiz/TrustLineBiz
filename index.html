@@ -2036,6 +2036,76 @@
   </script>
 
 
+  <script>
+  // ── MULTI-STEP FORM ─────────────────────────────────────────
+  (function() {
+    var currentStep = 1;
+
+    function goToStep(n) {
+      var s1  = document.getElementById('ms-step-1');
+      var s2  = document.getElementById('ms-step-2');
+      var s3h = document.getElementById('ms-step-3-header');
+      var s3f = document.getElementById('ms-step-3-fields');
+
+      s1.style.display  = n === 1 ? '' : 'none';
+      s2.style.display  = n === 2 ? '' : 'none';
+      s3h.style.display = n === 3 ? '' : 'none';
+      s3f.style.display = n === 3 ? '' : 'none';
+
+      for (var i = 1; i <= 3; i++) {
+        var dot = document.getElementById('ms-dot-' + i);
+        dot.classList.remove('ms-dot-active', 'ms-dot-done');
+        if (i < n)       dot.classList.add('ms-dot-done');
+        else if (i === n) dot.classList.add('ms-dot-active');
+      }
+      for (var j = 1; j <= 2; j++) {
+        var con = document.getElementById('ms-connector-' + j);
+        if (j < n) con.classList.add('ms-done');
+        else       con.classList.remove('ms-done');
+      }
+
+      currentStep = n;
+
+      // Scroll to top of form card with nav offset
+      var card = document.getElementById('get-quote');
+      if (card) {
+        var top = card.getBoundingClientRect().top + window.pageYOffset - 84;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }
+
+    // Step 1 — funding buttons auto-advance
+    document.querySelectorAll('.ms-fund-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.ms-fund-btn').forEach(function(b) {
+          b.classList.remove('ms-selected');
+        });
+        btn.classList.add('ms-selected');
+        var hidden = document.getElementById('fundingAmount');
+        if (hidden) hidden.value = btn.getAttribute('data-value');
+        setTimeout(function() { goToStep(2); }, 160);
+      });
+    });
+
+    // Step 2 — qualify CTA
+    var qualCta = document.querySelector('.ms-qualify-cta');
+    if (qualCta) {
+      qualCta.addEventListener('click', function() { goToStep(3); });
+    }
+
+    // Back buttons — each carries data-target
+    document.querySelectorAll('.ms-back-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        goToStep(parseInt(btn.getAttribute('data-target'), 10));
+      });
+    });
+
+    // Init
+    goToStep(1);
+  })();
+  </script>
+
+
   <!-- ═══════════════════════════════════════════
        SCHEDULING MODAL
   ════════════════════════════════════════════ -->
