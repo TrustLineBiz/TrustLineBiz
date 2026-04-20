@@ -1456,12 +1456,66 @@
       <!-- FORM CARD -->
       <div class="form-col">
       <div class="form-card" id="get-quote">
+
+        <!-- Multi-step progress indicator -->
+        <div class="ms-progress">
+          <div class="ms-dot ms-dot-active" id="ms-dot-1">1</div>
+          <div class="ms-connector" id="ms-connector-1"></div>
+          <div class="ms-dot" id="ms-dot-2">2</div>
+          <div class="ms-connector" id="ms-connector-2"></div>
+          <div class="ms-dot" id="ms-dot-3">3</div>
+        </div>
+
         <div class="form-step-indicator">Takes 2 minutes — no credit pull</div>
-        <h2>See How Much Your Business Qualifies For</h2>
-        <p>Free check. No obligation. Won't affect your credit score.</p>
-        <div class="form-inline-badges">
-          <span>✓ No credit pull from us</span>
-          <span>✓ No bank visit required</span>
+
+        <!-- ── STEP 1: Funding amount ── -->
+        <div id="ms-step-1">
+          <h2 class="ms-step-heading">How much funding does your business need?</h2>
+          <div class="ms-funding-grid">
+            <button type="button" class="ms-fund-btn" data-value="$5K – $50K">$5K – $50K</button>
+            <button type="button" class="ms-fund-btn" data-value="$50K – $250K">$50K – $250K</button>
+            <button type="button" class="ms-fund-btn" data-value="$250K – $1M">$250K – $1M</button>
+            <button type="button" class="ms-fund-btn" data-value="$1M+">$1M+</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: Qualification check ── -->
+        <div id="ms-step-2" style="display:none">
+          <button type="button" class="ms-back-btn" data-target="1">← Back</button>
+          <h2 class="ms-step-heading">Quick check — does this describe you?</h2>
+          <div class="ms-checklist">
+            <div class="ms-check-item">
+              <span class="ms-check-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12l4 4 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>My business has been open 6+ months</span>
+            </div>
+            <div class="ms-check-item">
+              <span class="ms-check-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12l4 4 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>I process at least $10K/month in revenue</span>
+            </div>
+            <div class="ms-check-item">
+              <span class="ms-check-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#22c55e"/><path d="M7 12l4 4 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>I have a US business checking account</span>
+            </div>
+          </div>
+          <p class="ms-qualify-sub">If that's you, you're in the right place.</p>
+          <button type="button" class="btn-primary ms-qualify-cta">Yes, that's me →</button>
+        </div>
+
+        <!-- ── STEP 3 header (shown in place of card heading on step 3) ── -->
+        <div id="ms-step-3-header" style="display:none">
+          <button type="button" class="ms-back-btn" data-target="2">← Back</button>
+          <h2>See How Much Your Business Qualifies For</h2>
+          <p style="font-size:0.875rem; color:var(--gray); margin-bottom:26px;">Free check. No obligation. Won't affect your credit score.</p>
+          <div class="form-inline-badges">
+            <span>✓ No credit pull from us</span>
+            <span>✓ No bank visit required</span>
+          </div>
         </div>
 
         <form id="quoteForm" novalidate>
@@ -1474,97 +1528,105 @@
           <input type="hidden" name="utm_medium" id="utm_medium" />
           <input type="hidden" name="utm_campaign" id="utm_campaign" />
           <input type="hidden" name="utm_content" id="utm_content" />
+          <!-- Funding amount captured from Step 1 -->
+          <input type="hidden" name="fundingAmount" id="fundingAmount" />
 
-          <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Full Name" autocomplete="name" maxlength="100" />
-            <div class="error-msg" id="fullName-err">Please enter your full name.</div>
-          </div>
+          <!-- Step 3 visible fields — hidden until step 3 is reached -->
+          <div id="ms-step-3-fields" style="display:none">
 
-          <div class="form-group">
-            <label for="businessName">Business Name</label>
-            <input type="text" id="businessName" name="businessName" placeholder="Main Street Diner" autocomplete="organization" maxlength="150" />
-            <div class="error-msg" id="businessName-err">Please enter your business name.</div>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" maxlength="14" />
-            <div class="error-msg" id="phone-err">Please enter a valid phone number.</div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Username@gmail.com" autocomplete="email" maxlength="254" />
-            <div class="error-msg" id="email-err">Please enter a valid email address.</div>
-          </div>
-
-          <div class="form-group">
-            <label for="creditScore">Estimated Credit Score</label>
-            <div class="select-wrapper">
-              <select id="creditScore" name="creditScore">
-                <option value="">Select credit score range...</option>
-                <option value="excellent">Excellent (750+)</option>
-                <option value="good">Good (700–749)</option>
-                <option value="fair">Fair (650–699)</option>
-                <option value="poor">Poor (600–649)</option>
-                <option value="bad">Bad (Below 600)</option>
-                <option value="unknown">I Don't Know</option>
-              </select>
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Full Name" autocomplete="name" maxlength="100" />
+              <div class="error-msg" id="fullName-err">Please enter your full name.</div>
             </div>
-            <label for="creditScoreExact" style="display:block; font-size:0.82rem; font-weight:500; color:var(--gray); margin-top:12px; margin-bottom:6px;">Or enter your exact score:</label>
-            <input type="number" id="creditScoreExact" name="creditScoreExact" placeholder="e.g. 680" min="300" max="850" />
-            <p style="margin-top:8px; font-size:0.75rem; color:var(--gray); line-height:1.55;">No credit check is performed at this stage. Your credit is never pulled during this inquiry.</p>
-          </div>
 
-          <div class="form-group">
-            <label for="revenue">Monthly Revenue</label>
-            <div class="select-wrapper">
-              <select id="revenue" name="revenue">
-                <option value="">Select monthly revenue...</option>
-                <option value="under-10k">Under $10K/mo</option>
-                <option value="10k-50k">$10K – $50K/mo</option>
-                <option value="50k-100k">$50K – $100K/mo</option>
-                <option value="100k-plus">$100K+/mo</option>
-              </select>
+            <div class="form-group">
+              <label for="businessName">Business Name</label>
+              <input type="text" id="businessName" name="businessName" placeholder="Main Street Diner" autocomplete="organization" maxlength="150" />
+              <div class="error-msg" id="businessName-err">Please enter your business name.</div>
             </div>
-            <div class="error-msg" id="revenue-err">Please select your monthly revenue range.</div>
-          </div>
 
-          <label class="custom-checkbox-label" for="preferText">
-            <input type="checkbox" id="preferText" name="preferText" value="yes" class="custom-checkbox-input" />
-            <span class="custom-checkbox-box" aria-hidden="true">
-              <svg class="custom-checkbox-check" width="11" height="9" viewBox="0 0 11 9" fill="none">
-                <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" maxlength="14" />
+              <div class="error-msg" id="phone-err">Please enter a valid phone number.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Username@gmail.com" autocomplete="email" maxlength="254" />
+              <div class="error-msg" id="email-err">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="creditScore">Estimated Credit Score</label>
+              <div class="select-wrapper">
+                <select id="creditScore" name="creditScore">
+                  <option value="">Select credit score range...</option>
+                  <option value="excellent">Excellent (750+)</option>
+                  <option value="good">Good (700–749)</option>
+                  <option value="fair">Fair (650–699)</option>
+                  <option value="poor">Poor (600–649)</option>
+                  <option value="bad">Bad (Below 600)</option>
+                  <option value="unknown">I Don't Know</option>
+                </select>
+              </div>
+              <label for="creditScoreExact" style="display:block; font-size:0.82rem; font-weight:500; color:var(--gray); margin-top:12px; margin-bottom:6px;">Or enter your exact score:</label>
+              <input type="number" id="creditScoreExact" name="creditScoreExact" placeholder="e.g. 680" min="300" max="850" />
+              <p style="margin-top:8px; font-size:0.75rem; color:var(--gray); line-height:1.55;">No credit check is performed at this stage. Your credit is never pulled during this inquiry.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="revenue">Monthly Revenue</label>
+              <div class="select-wrapper">
+                <select id="revenue" name="revenue">
+                  <option value="">Select monthly revenue...</option>
+                  <option value="under-10k">Under $10K/mo</option>
+                  <option value="10k-50k">$10K – $50K/mo</option>
+                  <option value="50k-100k">$50K – $100K/mo</option>
+                  <option value="100k-plus">$100K+/mo</option>
+                </select>
+              </div>
+              <div class="error-msg" id="revenue-err">Please select your monthly revenue range.</div>
+            </div>
+
+            <label class="custom-checkbox-label" for="preferText">
+              <input type="checkbox" id="preferText" name="preferText" value="yes" class="custom-checkbox-input" />
+              <span class="custom-checkbox-box" aria-hidden="true">
+                <svg class="custom-checkbox-check" width="11" height="9" viewBox="0 0 11 9" fill="none">
+                  <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="custom-checkbox-text">I prefer to be contacted by text message</span>
+            </label>
+
+            <label class="custom-checkbox-label" for="tcpaConsent">
+              <input type="checkbox" id="tcpaConsent" name="tcpaConsent" value="yes" class="custom-checkbox-input" />
+              <span class="custom-checkbox-box" aria-hidden="true">
+                <svg class="custom-checkbox-check" width="11" height="9" viewBox="0 0 11 9" fill="none">
+                  <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="custom-checkbox-text">I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a> and consent to be contacted by TrustLine and its lending partners via phone, text, or email as described above.</span>
+            </label>
+            <div class="error-msg" id="tcpaConsent-err">You must agree to the terms to continue.</div>
+
+            <button type="submit" class="btn-primary">Check My Funding Options →</button>
+
+            <div id="submit-error" style="display:none; color:#e05252; font-size:0.78rem; text-align:center; margin-top:10px; line-height:1.5;">
+              Something went wrong. Please try again or call us directly.
+            </div>
+
+            <div class="form-trust">
+              <svg width="13" height="14" viewBox="0 0 13 14" fill="none">
+                <path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="#8a95a3" stroke-width="1.2" fill="none"/>
+                <path d="M4 7L6 9L9.5 5.5" stroke="#8a95a3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </span>
-            <span class="custom-checkbox-text">I prefer to be contacted by text message</span>
-          </label>
+              256-bit SSL encrypted · Your info is never sold
+            </div>
 
-          <label class="custom-checkbox-label" for="tcpaConsent">
-            <input type="checkbox" id="tcpaConsent" name="tcpaConsent" value="yes" class="custom-checkbox-input" />
-            <span class="custom-checkbox-box" aria-hidden="true">
-              <svg class="custom-checkbox-check" width="11" height="9" viewBox="0 0 11 9" fill="none">
-                <path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="custom-checkbox-text">I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a> and consent to be contacted by TrustLine and its lending partners via phone, text, or email as described above.</span>
-          </label>
-          <div class="error-msg" id="tcpaConsent-err">You must agree to the terms to continue.</div>
+          </div><!-- /ms-step-3-fields -->
 
-          <button type="submit" class="btn-primary">Check My Funding Options →</button>
-
-          <div id="submit-error" style="display:none; color:#e05252; font-size:0.78rem; text-align:center; margin-top:10px; line-height:1.5;">
-            Something went wrong. Please try again or call us directly.
-          </div>
-
-          <div class="form-trust">
-            <svg width="13" height="14" viewBox="0 0 13 14" fill="none">
-              <path d="M6.5 0.5L1 2.5V7.5C1 10.5 3.5 13 6.5 13.5C9.5 13 12 10.5 12 7.5V2.5L6.5 0.5Z" stroke="#8a95a3" stroke-width="1.2" fill="none"/>
-              <path d="M4 7L6 9L9.5 5.5" stroke="#8a95a3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            256-bit SSL encrypted · Your info is never sold
-          </div>
         </form>
 
         <div class="form-success" id="formSuccess">
