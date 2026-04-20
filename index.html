@@ -1259,6 +1259,111 @@
       .footer-trust { flex-wrap: wrap; }
       .nav-cta { display: none; }
     }
+
+    /* ── MULTI-STEP FORM ── */
+    .ms-progress {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .ms-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.73rem;
+      font-weight: 700;
+      background: var(--border);
+      color: var(--gray);
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .ms-dot.ms-dot-active {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+    .ms-dot.ms-dot-done {
+      background: var(--gold-dark);
+      color: var(--white);
+    }
+    .ms-connector {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      transition: background 0.2s;
+    }
+    .ms-connector.ms-done {
+      background: var(--gold-dark);
+    }
+    .ms-step-heading {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 22px;
+      line-height: 1.3;
+    }
+    .ms-funding-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .ms-fund-btn {
+      padding: 20px 10px;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      color: var(--gold);
+      font-size: 0.975rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, transform 0.1s;
+      text-align: center;
+      line-height: 1.25;
+      font-family: inherit;
+    }
+    .ms-fund-btn:hover { background: rgba(201,168,76,0.12); transform: translateY(-1px); }
+    .ms-fund-btn.ms-selected { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); }
+    .ms-back-btn {
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+      font-family: inherit;
+    }
+    .ms-back-btn:hover { color: var(--navy); }
+    .ms-checklist {
+      margin-bottom: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .ms-check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.925rem;
+      color: var(--navy);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    .ms-check-icon { flex-shrink: 0; display: flex; align-items: center; }
+    .ms-qualify-sub {
+      font-size: 0.875rem;
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .ms-qualify-cta { width: 100%; }
   </style>
 
   <!-- Meta Pixel — replace 1232015482337066 with your real ID from Meta Business Manager -->
