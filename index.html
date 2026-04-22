@@ -848,6 +848,79 @@
       .why-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--navy-dark);
+      padding: 90px 5%;
+    }
+
+    .testimonials .section-label { color: var(--gold); }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-sub   { color: rgba(255,255,255,0.55); max-width: 620px; }
+
+    .testimonials-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: left;
+    }
+
+    .t-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .t-stars { display: flex; gap: 3px; }
+    .t-star  { color: var(--gold); font-size: 0.95rem; line-height: 1; }
+
+    .t-quote {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .t-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .t-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .t-name  { font-size: 0.85rem; font-weight: 700; color: var(--white); line-height: 1.3; }
+    .t-title { font-size: 0.76rem; color: rgba(255,255,255,0.4); line-height: 1.4; margin-top: 2px; }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── BOTTOM CTA BAND ── */
     .cta-band {
       background: linear-gradient(135deg, var(--navy-dark), var(--navy));
@@ -1643,7 +1716,7 @@
           <p>A TrustLine specialist will review your submission and reach out within <strong>4 business hours (8AM–8PM EST, 7 days a week)</strong> to discuss your business and next steps. Check your phone and email — we move fast.</p>
         </div>
       </div>
-      <p class="tcpa-consent">TrustLine is an independent lead generation service. We do not provide funding directly. By submitting this form, your information will be shared with third-party funding partners who make all credit and approval decisions. You consent to be contacted by TrustLine and those partners via phone, email, or SMS. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
+      <p class="tcpa-consent">TrustLine is the intake platform operated in partnership with Central Street Lending, a Florida-based business funding company. We do not provide funding directly — your inquiry may be reviewed by Central Street Lending and fulfilled through their network of lending partners, who make all credit and approval decisions. You consent to be contacted by TrustLine, Central Street Lending, and their lending partners via phone, email, or SMS. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
       </div>
     </div>
   </section>
@@ -1881,7 +1954,93 @@
 
 
   <!-- ═══════════════════════════════════════════
-       SECTION 6: STRONG CTA SECTION
+       SECTION 6: TESTIMONIALS
+  ════════════════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="section-label">Real Results</div>
+    <h2 class="section-title">What Business Owners Are Saying</h2>
+    <p class="section-sub">These are real reviews from business owners funded through Central Street Lending, the Florida-based funding company behind TrustLine's process.</p>
+
+    <div class="testimonials-grid">
+
+      <div class="t-card">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-quote">"I needed $150,000 for new excavator equipment and my bank said no. Central Street Lending had me approved and funded in under 48 hours. Game changer for my construction business."</p>
+        <div class="t-author">
+          <div class="t-avatar">MR</div>
+          <div>
+            <div class="t-name">Marco R.</div>
+            <div class="t-title">Owner, MR Construction Group — Tampa, FL</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-quote">"The line of credit has been a lifesaver for managing cash flow between contracts. Up to $500K available whenever I need it. The team walked me through every step."</p>
+        <div class="t-author">
+          <div class="t-avatar">ST</div>
+          <div>
+            <div class="t-name">Sandra T.</div>
+            <div class="t-title">CEO, Tampa Bay Logistics LLC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-quote">"We applied Monday, had our offer Tuesday, and funds in our account Wednesday. Three years with traditional banks got us nowhere. One call to Central Street changed everything."</p>
+        <div class="t-author">
+          <div class="t-avatar">JD</div>
+          <div>
+            <div class="t-name">James D.</div>
+            <div class="t-title">Owner, Sunshine Roofing &amp; Repairs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-quote">"My credit score was not perfect but they still found me a great MCA deal. I used it to buy inventory before our biggest season. Paid it off in 4 months and went back for more."</p>
+        <div class="t-author">
+          <div class="t-avatar">AL</div>
+          <div>
+            <div class="t-name">Angela L.</div>
+            <div class="t-title">Founder, Coastal Boutique — St. Pete Beach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-quote">"Ennio's team is the real deal. Honest, fast, and they actually picked up the phone. Got $200K in equipment financing for my HVAC fleet. No runaround, no games. Just results."</p>
+        <div class="t-author">
+          <div class="t-avatar">RG</div>
+          <div>
+            <div class="t-name">Roberto G.</div>
+            <div class="t-title">Owner, ProAir HVAC Services — Orlando</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-quote">"I have done 4 deals with Central Street Lending over 2 years. They understand my business, they are fast, and they always come through. I will not go anywhere else for capital."</p>
+        <div class="t-author">
+          <div class="t-avatar">KW</div>
+          <div>
+            <div class="t-name">Kevin W.</div>
+            <div class="t-title">President, Westcoast Plumbing &amp; Mechanical</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 7: STRONG CTA SECTION
   ════════════════════════════════════════════ -->
   <section class="cta-band">
     <h2>Ready to Stop Waiting on Banks?</h2>
