@@ -1942,6 +1942,9 @@
 
 
   <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // Phone number auto-formatting
     document.getElementById('phone').addEventListener('input', function (e) {
       let v = e.target.value.replace(/\D/g, '').slice(0, 10);
@@ -2070,11 +2073,13 @@
 
       currentStep = n;
 
-      // Scroll to top of form card with nav offset
-      var card = document.getElementById('get-quote');
-      if (card) {
-        var top = card.getBoundingClientRect().top + window.pageYOffset - 84;
-        window.scrollTo({ top: top, behavior: 'smooth' });
+      // Scroll to form card only on user-triggered step advances
+      if (n > 1) {
+        var card = document.getElementById('get-quote');
+        if (card) {
+          var top = card.getBoundingClientRect().top + window.pageYOffset - 84;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
       }
     }
 
