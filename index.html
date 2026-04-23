@@ -1319,7 +1319,8 @@
         gap: 40px;
       }
       .hero { padding-top: 90px; }
-      .hero-content { text-align: center; }
+      .hero-content { text-align: center; order: 2; }
+      .form-col { order: 1; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-stats { justify-content: center; }
       .hero-cta-group { justify-content: center; }
@@ -1340,6 +1341,33 @@
         align-items: center;
         text-align: center;
       }
+      body { padding-bottom: 72px; }
+      .mobile-sticky-cta { display: block; }
+    }
+
+    /* ── MOBILE STICKY CTA ── */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 90;
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(201,168,76,0.3);
+      padding: 10px 16px;
+    }
+    .mobile-sticky-cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy-dark);
+      font-size: 0.975rem;
+      font-weight: 800;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.35);
     }
 
     /* ── MULTI-STEP FORM ── */
@@ -1448,7 +1476,7 @@
     .ms-qualify-cta { width: 100%; }
   </style>
 
-  <!-- Meta Pixel — replace 1232015482337066 with your real ID from Meta Business Manager -->
+  <!-- Meta Pixel -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -1520,7 +1548,7 @@
             <span class="stat-number">24–48h</span>
             <span class="stat-label">Approval Time</span>
           </div>
-          <div class="stat" style="align-items:center; text-align:center;">
+          <div class="stat">
             <span class="stat-number">100+</span>
             <span class="stat-label">Lender Network</span>
           </div>
@@ -1588,7 +1616,7 @@
         <!-- ── STEP 3 header (shown in place of card heading on step 3) ── -->
         <div id="ms-step-3-header" style="display:none">
           <button type="button" class="ms-back-btn" data-target="2">← Back</button>
-          <h2>Complete Your Eligibility Check</h2>
+          <h2 class="ms-step-heading">Complete Your Eligibility Check</h2>
           <p style="font-size:0.875rem; color:var(--gray); margin-bottom:26px;">Takes less than 2 minutes to start · No obligation · Won't affect your credit score</p>
           <div class="form-inline-badges">
             <span>✓ No credit pull from us</span>
@@ -1632,7 +1660,7 @@
 
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Username@gmail.com" autocomplete="email" maxlength="254" />
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" maxlength="254" />
               <div class="error-msg" id="email-err">Please enter a valid email address.</div>
             </div>
 
@@ -1716,6 +1744,13 @@
           <p>A TrustLine specialist will review your submission and reach out within <strong>4 business hours (8AM–8PM EST, 7 days a week)</strong> to discuss your business and next steps. Check your phone and email — we move fast.</p>
         </div>
       </div>
+
+      <!-- FUTURE: Jack trust block goes here
+           Jack McGrath
+           Funding Specialist · Central Street Lending
+           Personally reviews every inquiry.
+      -->
+
       <p class="tcpa-consent">TrustLine is the intake platform operated in partnership with Central Street Lending, a Florida-based business funding company. We do not provide funding directly — your inquiry may be reviewed by Central Street Lending and fulfilled through their network of lending partners, who make all credit and approval decisions. You consent to be contacted by TrustLine, Central Street Lending, and their lending partners via phone, email, or SMS. Message &amp; data rates may apply. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</p>
       </div>
     </div>
@@ -1731,7 +1766,7 @@
       <div class="stat-item"><span class="stat-num">$20M+</span><span class="stat-label">Maximum Funding Available</span></div>
       <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">Lenders in Our Network</span></div>
       <div class="stat-item"><span class="stat-num">24–48h</span><span class="stat-label">Typical Approval Window</span></div>
-      <div class="stat-item"><span class="stat-num">2 Min</span><span class="stat-label">To Complete the Form</span></div>
+      <div class="stat-item"><span class="stat-num">4 Biz Hrs</span><span class="stat-label">Response Window</span></div>
     </div>
   </section>
 
@@ -2218,6 +2253,9 @@
       s3h.style.display = n === 3 ? '' : 'none';
       s3f.style.display = n === 3 ? '' : 'none';
 
+      var ind = document.querySelector('.form-step-indicator');
+      if (ind) ind.style.display = n === 3 ? 'none' : '';
+
       for (var i = 1; i <= 3; i++) {
         var dot = document.getElementById('ms-dot-' + i);
         dot.classList.remove('ms-dot-active', 'ms-dot-done');
@@ -2499,5 +2537,11 @@
     window._openScheduleModal = openModal;
   })();
   </script>
+
+  <!-- Mobile sticky CTA — visible on ≤600px when nav CTA is hidden -->
+  <div class="mobile-sticky-cta" id="mobileStickyCta">
+    <a href="#get-quote" class="mobile-sticky-cta-btn">Check My Eligibility →</a>
+  </div>
+
 </body>
 </html>
