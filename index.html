@@ -1312,6 +1312,31 @@
       .stat-num { font-size: 1.6rem; }
     }
 
+    /* ── MOBILE STICKY CTA ── */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 90;
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(201,168,76,0.3);
+      padding: 10px 16px;
+    }
+    .mobile-sticky-cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy-dark);
+      font-size: 0.975rem;
+      font-weight: 800;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.35);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero-inner {
@@ -1343,31 +1368,6 @@
         align-items: center;
         text-align: center;
       }
-    }
-
-    /* ── MOBILE STICKY CTA ── */
-    .mobile-sticky-cta {
-      display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 90;
-      background: var(--navy-dark);
-      border-top: 1px solid rgba(201,168,76,0.3);
-      padding: 10px 16px;
-    }
-    .mobile-sticky-cta-btn {
-      display: block;
-      width: 100%;
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      color: var(--navy-dark);
-      font-size: 0.975rem;
-      font-weight: 800;
-      padding: 13px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      text-align: center;
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 16px rgba(201,168,76,0.35);
     }
 
     /* ── MULTI-STEP FORM ── */
